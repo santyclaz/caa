@@ -1,0 +1,26 @@
+{
+  "name": "caa",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santyclaz/caa.git"
+  },
+  "author": "santyclaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santyclaz/caa/issues"
+  },
+  "homepage": "https://github.com/santyclaz/caa",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-traceur": "^0.17.1",
+    "hapi": "^10.0.0",
+    "inert": "^3.0.1"
+  },
+  "dependencies": {}
+}

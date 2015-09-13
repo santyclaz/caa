@@ -1,0 +1,32 @@
+<html ng-app="caa">
+	<head>
+		<base href="/" />
+
+		<title>C&A</title>
+
+		<!-- dependencies (bower) -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+
+	</head>
+
+	<body>
+
+		<div class="content" ui-view></div>
+
+		<!-- dependencies (bower) -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+		<!-- app -->
+		<script src="index.js"></script>
+
+		<!-- app routes -->
+		<script src="routes/routes.js"></script>
+
+		<!-- app views -->
+		<script src="views/rsvp/rsvp.js"></script>
+
+	</body>
+</html>
