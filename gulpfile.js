@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var argv = require('yargs').argv;
 
 var traceur = require('gulp-traceur');
 
@@ -12,7 +13,26 @@ gulp.task('default',
 
 gulp.task('serve',
 	function() {
+		var options = {};
+
+		// Port option
+		var port = false;
+		if (argv.port !== undefined) {
+			port = argv.port;
+		}
+		else if (argv.p !== undefined) {
+			port = argv.p;
+		}
+
+		if (typeof port === 'number') {
+			options.port = port;
+		}
+		else {
+			// TODO: look into usage & demand
+			throw Error('Invalid port "' + port + '"');
+		}
+
 		// TODO: livereload
 		// TODO: auto browser open
-		server.start();
+		server.start(options);
 	});
