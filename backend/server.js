@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var Hapi = require('hapi');
 
 
@@ -12,7 +13,9 @@ var API = {
 var defaultOpts = {
 	host: 'localhost',
 	port: 7070,
-	apiPath: 'api',
+	api: {
+		path: 'api',
+	},
 	client: {
 		path: 'src',
 		livereload: true
@@ -30,17 +33,6 @@ function start(config) {
 	config = typeof config === 'object' ? config : {};
 	var host = 'host' in config ? config.host : defaultOpts.host;
 	var port = 'port' in config ? config.port : defaultOpts.port;
-	var apiPath = '/' + ('apiPath' in config ? config.apiPath : defaultOpts.apiPath);
-
-	var client = defaultOpts.client;
-	if ('client' in config) {
-		if (typeof config.client === 'object') {
-			client = config.client;
-		}
-		else {
-			client = false;
-		}
-	}
 
 	// create a server with a host and port
 	var server = new Hapi.Server();
@@ -49,35 +41,37 @@ function start(config) {
 		port: port
 	});
 
-	// register API routes
-	server.register(
-		{
-			register: require('./api')
-		},
-		{
-			routes: {
-				prefix: apiPath
-			}
-		},
-		function (err) {
-			if (err) {
-				console.log('api', err);
-			}
-		});
+	// register API if set
+	if ('api' in config) {
+		var apiConfig = _.extend({}, defaultOpts.api, config.api);
+		var apiPath = '/' + apiConfig.path;
 
-	// check if client routing enabled
-	if (client) {
-		var clientPath = 'path' in client ? client.path : defaultOpts.client.path;
-		var livereload = 'livereload' in client ? client.livereload : defaultOpts.client.livereload;
+		// register API routes
+		server.register(
+			{
+				register: require('./api')
+			},
+			{
+				routes: {
+					prefix: apiPath
+				}
+			},
+			function (err) {
+				if (err) {
+					console.log('api', err);
+				}
+			});
+	}
+
+	// register client if set
+	if ('client' in config) {
+		var clientConfig = _.extend({}, defaultOpts.client, config.client);
 
 		// register client routes
 		server.register(
 			{
 				register: require('./client'),
-				options: {
-					clientPath: clientPath,
-					livereload: livereload
-				}
+				options: clientConfig
 			},
 			function (err) {
 				if (err) {

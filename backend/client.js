@@ -5,7 +5,7 @@
  */
 
 var defaultOpts = {
-	// clientPath: string, // required
+	// path: string, // required, path to client root dir
 	index: 'index.html',
 	livereload: true,
 	spa: true
@@ -19,14 +19,14 @@ exports.register = function (server, options, next) {
 
 	options = typeof options === 'object' ? options : {};
 
-	if (!('clientPath' in options) || typeof options.clientPath !== 'string') {
-		throw new Error('options.clientPath is required');
+	if (!('path' in options) || typeof options.path !== 'string') {
+		throw new Error('options.path is required');
 	}
 	if (('index' in options) && typeof options.index !== 'string') {
 		throw new Error('options.index currently only supports string');
 	}
 
-	var clientPath = options.clientPath;
+	var path = options.path;
 	var index = 'index' in options ? options.index : defaultOpts.index;
 	var spa = 'spa' in options ? options.spa : defaultOpts.spa;
 
@@ -47,7 +47,7 @@ exports.register = function (server, options, next) {
 			path: '/{param*}',
 			handler: {
 				directory: {
-					path: clientPath,
+					path: path,
 					listing: false,
 					index: index
 				}
@@ -76,7 +76,7 @@ exports.register = function (server, options, next) {
 			var statusCode = response.output.statusCode;
 
 			if (statusCode === 404) {
-				return reply.file(clientPath + '/' + index);
+				return reply.file(path + '/' + index);
 			}
 		}
 

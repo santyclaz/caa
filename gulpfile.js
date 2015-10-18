@@ -13,7 +13,10 @@ gulp.task('default',
 
 gulp.task('serve',
 	function() {
-		var options = {};
+		var options = {
+			api: true,
+			client: true
+		};
 
 		// Port option
 		var port = false;
@@ -28,7 +31,7 @@ gulp.task('serve',
 			options.port = port;
 		}
 		else {
-			// TODO: look into usage & demand
+			// TODO: look into usage & demand npm packges
 			throw Error('Invalid port "' + port + '"');
 		}
 
