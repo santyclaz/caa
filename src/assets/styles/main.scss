@@ -1,10 +1,22 @@
+/**
+ *	General
+ */
+
 body {
-	@extend .sweet-pea;
 }
+
+
+/**
+ *	Typography
+ */
 
 .sweet-pea {
 	font-family: 'sweet-pea';
 	font-weight: normal;
 	-webkit-font-smoothing:antialiased;
 	text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+	@extend .sweet-pea;
 }

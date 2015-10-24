@@ -4,6 +4,7 @@
 		// routes
 		'caa.routes',
 		// app
+		'caa.views.navbar',
 		'caa.views.rsvp',
 		'caa.views.story',
 		// lib
@@ -16,7 +17,7 @@
 		'$urlRouterProvider', '$locationProvider', // angular services
 		function($urlRouterProvider, $locationProvider) {
 			// Default route
-			$urlRouterProvider.otherwise('/');
+			$urlRouterProvider.otherwise('/story');
 
 			// Setting html5Mode
 			// NOTE: <base href="..." /> tag needed to simplify things with relative urls

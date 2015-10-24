@@ -9,7 +9,7 @@
 		function routes($stateProvider) {
 
 			$stateProvider.state('story', {
-				url: '/',
+				url: '/story',
 				templateUrl: 'views/story/story.html',
 				controller: 'story',
 			});

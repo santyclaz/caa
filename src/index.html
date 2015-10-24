@@ -8,15 +8,18 @@
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
 
+		<!-- dependencies (lib) -->
+		<link rel="stylesheet" href="lib/sweet-pea/css/sweet-pea.css">
+
 		<!-- app styles -->
 		<link rel="stylesheet" href="assets/styles/main.css">
-		<link rel="stylesheet" href="assets/fonts/sweet-pea/css/stylesheet.css">
+		<link rel="stylesheet" href="views/story/story.css">
 
 	</head>
 
 	<body>
 
-		<div class="content" ng-include="'views/app.html'"></div>
+		<div ng-include="'views/app.html'"></div>
 
 		<!-- dependencies (bower) -->
 		<script src="bower_components/angular/angular.js"></script>
@@ -30,6 +33,7 @@
 		<script src="routes/routes.js"></script>
 
 		<!-- app views -->
+		<script src="views/navbar/navbar.js"></script>
 		<script src="views/rsvp/rsvp.js"></script>
 		<script src="views/story/story.js"></script>
 
