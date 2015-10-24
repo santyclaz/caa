@@ -1,3 +1,10 @@
 body {
-	background: gray;
+	@extend .sweet-pea;
+}
+
+.sweet-pea {
+	font-family: 'sweet-pea';
+	font-weight: normal;
+	-webkit-font-smoothing:antialiased;
+	text-rendering: optimizeLegibility;
 }
