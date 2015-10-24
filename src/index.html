@@ -16,7 +16,7 @@
 
 	<body>
 
-		<div class="content" ui-view></div>
+		<div class="content" ng-include="'views/app.html'"></div>
 
 		<!-- dependencies (bower) -->
 		<script src="bower_components/angular/angular.js"></script>
@@ -31,6 +31,7 @@
 
 		<!-- app views -->
 		<script src="views/rsvp/rsvp.js"></script>
+		<script src="views/story/story.js"></script>
 
 	</body>
 </html>

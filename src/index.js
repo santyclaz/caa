@@ -1,16 +1,19 @@
 (function() {
 
 	var module = angular.module('caa', [
+		// routes
+		'caa.routes',
 		// app
 		'caa.views.rsvp',
-		'caa.routes',
+		'caa.views.story',
 		// lib
 		'ui.router',
 		'ui.bootstrap',
 	]);
 
+	// config
 	module.config([
-		'$urlRouterProvider', '$locationProvider',
+		'$urlRouterProvider', '$locationProvider', // angular services
 		function($urlRouterProvider, $locationProvider) {
 			// Default route
 			$urlRouterProvider.otherwise('/');
@@ -18,6 +21,20 @@
 			// Setting html5Mode
 			// NOTE: <base href="..." /> tag needed to simplify things with relative urls
 			$locationProvider.html5Mode(true);
+		}
+	]);
+
+	// run
+	module.run([
+		'$rootScope', // angular services
+		'$state', // lib services
+		function ($rootScope, $state) {
+
+			// throw exception in $stateChangeError
+			$rootScope.$on('$stateChangeError',
+				function(e, toState, toParams, fromState, fromParams, error) {
+					throw error;
+				});
 		}
 	]);
 

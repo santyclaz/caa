@@ -8,11 +8,16 @@
 		'$stateProvider',
 		function routes($stateProvider) {
 
-			// Root state
-			$stateProvider.state('rsvp', {
+			$stateProvider.state('story', {
 				url: '/',
+				templateUrl: 'views/story/story.html',
+				controller: 'story',
+			});
+
+			$stateProvider.state('rsvp', {
+				url: '/rsvp',
 				templateUrl: 'views/rsvp/rsvp.html',
-				controller: 'rsvp'
+				controller: 'rsvp',
 			});
 		}
 	]);

@@ -3,12 +3,13 @@
 	var module = angular.module('caa.views.rsvp', [
 	]);
 
-	module.controller('rsvp', [
+	module.controller('rsvp', RsvpController);
+
+	RsvpController.$inject = [
 		'$scope',
-		function rsvpController($scope) {
+	];
+	function RsvpController($scope) {
 
-		}
-	]);
-
+	}
 
 })();
