@@ -19,10 +19,10 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-traceur": "^0.17.1",
-    "hapi": "^10.0.0",
-    "inert": "^3.0.1",
+    "hapi": "^11.0.0",
+    "inert": "^3.2.0",
     "lodash": "^3.10.1",
-    "yargs": "^3.27.0"
+    "yargs": "^3.29.0"
   },
   "dependencies": {}
 }
