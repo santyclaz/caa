@@ -34,6 +34,11 @@ function start(config) {
 	var host = 'host' in config ? config.host : defaultOpts.host;
 	var port = 'port' in config ? config.port : defaultOpts.port;
 
+	// validation
+	if (typeof port !== 'number') {
+		throw Error('Invalid port "' + port + '"');
+	}
+
 	// create a server with a host and port
 	var server = new Hapi.Server();
 	server.connection({
