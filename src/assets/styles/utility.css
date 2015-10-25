@@ -1,0 +1,24 @@
+/**
+ * Aspect-ratios (for container of images)
+ *
+ * The following mixin adds attributes to achieve the following:
+ * 1) Given a width, makes target container maintain given aspect ratio
+ * 2) Crop any excessive content that exceeds aspect ratio
+ *
+ * http://stackoverflow.com/a/25404121/1217025
+ */
+.aspect-ratio-3-2 {
+  height: 0px;
+  padding-bottom: 66.66667%;
+  overflow: hidden; }
+  .aspect-ratio-3-2 img {
+    width: 100%; }
+
+.aspect-ratio-4-3 {
+  height: 0px;
+  padding-bottom: 75%;
+  overflow: hidden; }
+  .aspect-ratio-4-3 img {
+    width: 100%; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInV0aWxpdHkuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7R0FRRztBQVcyQyxpQkFBaUIsQ0FDN0Q7RUFURCxNQUFNLEVBQUUsR0FBSTtFQUNaLGNBQWMsRUFBRSxTQUFVO0VBQzFCLFFBQVEsRUFBRSxNQUFPLEdBT2Y7RUFORixpQkFBaUIsQ0FBQyxHQUFHLENBQWpCO0lBQ0gsS0FBSyxFQUFFLElBQUssR0FEUjs7QUFLd0MsaUJBQWlCLENBQzdEO0VBVEQsTUFBTSxFQUFFLEdBQUk7RUFDWixjQUFjLEVBQUUsR0FBVTtFQUMxQixRQUFRLEVBQUUsTUFBTyxHQU9mO0VBTkYsaUJBQWlCLENBQUMsR0FBRyxDQUFqQjtJQUNILEtBQUssRUFBRSxJQUFLLEdBRFIiLCJmaWxlIjoidXRpbGl0eS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQXNwZWN0LXJhdGlvcyAoZm9yIGNvbnRhaW5lciBvZiBpbWFnZXMpXHJcbiAqXHJcbiAqIFRoZSBmb2xsb3dpbmcgbWl4aW4gYWRkcyBhdHRyaWJ1dGVzIHRvIGFjaGlldmUgdGhlIGZvbGxvd2luZzpcclxuICogMSkgR2l2ZW4gYSB3aWR0aCwgbWFrZXMgdGFyZ2V0IGNvbnRhaW5lciBtYWludGFpbiBnaXZlbiBhc3BlY3QgcmF0aW9cclxuICogMikgQ3JvcCBhbnkgZXhjZXNzaXZlIGNvbnRlbnQgdGhhdCBleGNlZWRzIGFzcGVjdCByYXRpb1xyXG4gKlxyXG4gKiBodHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vYS8yNTQwNDEyMS8xMjE3MDI1XHJcbiAqL1xyXG5cclxuQG1peGluIGFzcGVjdFJhdGlvKCR3aWR0aCwgJGhlaWdodCkge1xyXG5cdGhlaWdodDogMHB4O1xyXG5cdHBhZGRpbmctYm90dG9tOiBwZXJjZW50YWdlKCRoZWlnaHQvJHdpZHRoKTtcclxuXHRvdmVyZmxvdzogaGlkZGVuO1xyXG5cdGltZyB7XHJcblx0XHR3aWR0aDogMTAwJTtcclxuXHR9XHJcbn1cclxuLy8gQXNwZWN0LXJhdGlvIGNsYXNzIGZhY3RvcnlcclxuQG1peGluIG1ha2VBc3BlY3RSYXRpb0NsYXNzKCR3aWR0aCwgJGhlaWdodCkge1xyXG5cdC5hc3BlY3QtcmF0aW8tI3skd2lkdGh9LSN7JGhlaWdodH0ge1xyXG5cdFx0QGluY2x1ZGUgYXNwZWN0UmF0aW8oJHdpZHRoLCAkaGVpZ2h0KTtcclxuXHR9XHJcbn1cclxuXHJcbkBpbmNsdWRlIG1ha2VBc3BlY3RSYXRpb0NsYXNzKDMsMik7XHJcbkBpbmNsdWRlIG1ha2VBc3BlY3RSYXRpb0NsYXNzKDQsMyk7Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */

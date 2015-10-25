@@ -10,6 +10,7 @@
 		// lib
 		'ui.router',
 		'ui.bootstrap',
+		'tdn.scale-to-fit',
 	]);
 
 	// config

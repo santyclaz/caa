@@ -1,0 +1,27 @@
+/**
+ * Aspect-ratios (for container of images)
+ *
+ * The following mixin adds attributes to achieve the following:
+ * 1) Given a width, makes target container maintain given aspect ratio
+ * 2) Crop any excessive content that exceeds aspect ratio
+ *
+ * http://stackoverflow.com/a/25404121/1217025
+ */
+
+@mixin aspectRatio($width, $height) {
+	height: 0px;
+	padding-bottom: percentage($height/$width);
+	overflow: hidden;
+	img {
+		width: 100%;
+	}
+}
+// Aspect-ratio class factory
+@mixin makeAspectRatioClass($width, $height) {
+	.aspect-ratio-#{$width}-#{$height} {
+		@include aspectRatio($width, $height);
+	}
+}
+
+@include makeAspectRatioClass(3,2);
+@include makeAspectRatioClass(4,3);
