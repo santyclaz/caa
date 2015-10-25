@@ -1,10 +1,5 @@
-/**
- *	Variables
- */
-
-$accentColor1: #86C6C3; // mint
-$accentColor2: #EBACAC; // pink
-$accentColor2: #D89B2A; // gold
+@import "variables.scss";
+@import "utility.scss";
 
 
 /**
@@ -30,3 +25,13 @@ body {
 h1, h2, h3 {
 	@extend .sweet-pea;
 }
+
+
+/**
+ *	Aspect ratios
+ */
+
+// .aspect-ratio-3-2
+@include makeAspectRatioClass(3,2);
+// .aspect-ratio-4-3
+@include makeAspectRatioClass(4,3);

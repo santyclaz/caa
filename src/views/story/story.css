@@ -1,6 +1,40 @@
+/**
+ *	Variables
+ */
+/**
+ * Aspect-ratios (for container of images)
+ *
+ * The following mixin adds attributes to achieve the following:
+ * 1) Given a width, makes target container maintain given aspect ratio
+ * 2) Crop any excessive content that exceeds aspect ratio
+ *
+ * http://stackoverflow.com/a/25404121/1217025
+ */
+/**
+ * Vertical align element
+ */
 section.story-view {
   text-align: center; }
   section.story-view .jumbo {
     height: 400px; }
+  section.story-view .content {
+    position: relative;
+    padding-top: 75px; }
+    section.story-view .content .info-bubble {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      background: #86C6C3; }
+      section.story-view .content .info-bubble .text {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: #FFF;
+        font-size: 20px; }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0b3J5L3N0b3J5LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQU8sT0FBTyxXQUFXLENBQU47RUFDbEIsVUFBVSxFQUFFLE1BQU8sR0FEQTtFQUduQixPQUFPLFdBQVcsQ0FBQyxNQUFNLENBQWxCO0lBQ04sTUFBTSxFQUFFLEtBQU0sR0FEUCIsImZpbGUiOiJzdG9yeS9zdG9yeS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzZWN0aW9uLnN0b3J5LXZpZXcge1xyXG5cdHRleHQtYWxpZ246IGNlbnRlcjtcclxuXHJcblx0Lmp1bWJvIHtcclxuXHRcdGhlaWdodDogNDAwcHg7XHJcblx0fVxyXG59Il0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCIuLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2NzcyIsInN0b3J5L3N0b3J5LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0dBRUc7QUNGSDs7Ozs7Ozs7R0FRRztBQWtCSDs7R0FFRztBQ3pCSSxPQUFPLFdBQVcsQ0FBTjtFQUNsQixVQUFVLEVBQUUsTUFBTyxHQURBO0VBR25CLE9BQU8sV0FBVyxDQUFDLE1BQU0sQ0FBbEI7SUFDTixNQUFNLEVBQUUsS0FBTSxHQURQO0VBSVIsT0FBTyxXQUFXLENBQUMsUUFBUSxDQUFsQjtJQUdSLFFBQVEsRUFBRSxRQUFTO0lBQ25CLFdBQVcsRUFBRSxJQUFxQixHQUp6QjtJQU1ULE9BQU8sV0FBVyxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQTNCO01BQ1osUUFBUSxFQUFFLFFBQVM7TUFDbkIsR0FBRyxFQUFFLENBQUU7TUFDUCxJQUFJLEVBQUUsR0FBSTtNQUNWLFNBQVMsRUFBRSxxQkFBUztNQUVwQixLQUFLLEVBWGlCLEtBQUs7TUFZM0IsTUFBTSxFQVpnQixLQUFLO01BYzNCLFVBQVUsRUZyQkUsT0FBTyxHRVlOO01BV2IsT0FBTyxXQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxLQUFLLENBQXhDO1FESVIsUUFBUSxFQUR3QixRQUFRO1FBRXhDLEdBQUcsRUFBRSxHQUFJO1FBQ1QsaUJBQWlCLEVBQUUsZ0JBQVU7UUFDN0IsYUFBYSxFQUFFLGdCQUFVO1FBQ3pCLFNBQVMsRUFBRSxnQkFBVTtRQ05sQixLQUFLLEVBQUUsSUFBSztRQUNaLFNBQVMsRUFBRSxJQUFLLEdBSFYiLCJmaWxlIjoic3Rvcnkvc3RvcnkuY3NzIiwic291cmNlc0NvbnRlbnQiOltudWxsLG51bGwsIkBpbXBvcnQgXCIuLi8uLi9hc3NldHMvc3R5bGVzL3ZhcmlhYmxlcy5zY3NzXCI7XHJcbkBpbXBvcnQgXCIuLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2Nzc1wiO1xyXG5cclxuc2VjdGlvbi5zdG9yeS12aWV3IHtcclxuXHR0ZXh0LWFsaWduOiBjZW50ZXI7XHJcblxyXG5cdC5qdW1ibyB7XHJcblx0XHRoZWlnaHQ6IDQwMHB4O1xyXG5cdH1cclxuXHJcblx0LmNvbnRlbnQge1xyXG5cdFx0JGluZm8tYnViYmxlLWRpYW1ldGVyOiAxNTBweDtcclxuXHJcblx0XHRwb3NpdGlvbjogcmVsYXRpdmU7XHJcblx0XHRwYWRkaW5nLXRvcDogJGluZm8tYnViYmxlLWRpYW1ldGVyIC8gMjtcclxuXHJcblx0XHQuaW5mby1idWJibGUge1xyXG5cdFx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0XHRcdHRvcDogMDtcclxuXHRcdFx0bGVmdDogNTAlO1xyXG5cdFx0XHR0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuXHJcblx0XHRcdHdpZHRoOiAkaW5mby1idWJibGUtZGlhbWV0ZXI7XHJcblx0XHRcdGhlaWdodDogJGluZm8tYnViYmxlLWRpYW1ldGVyO1xyXG5cclxuXHRcdFx0YmFja2dyb3VuZDogJGFjY2VudENvbG9yMTtcclxuXHJcblx0XHRcdC50ZXh0IHtcclxuXHRcdFx0XHRAaW5jbHVkZSB2ZXJ0aWNhbC1hbGlnbigpO1xyXG5cdFx0XHRcdGNvbG9yOiAjRkZGO1xyXG5cdFx0XHRcdGZvbnQtc2l6ZTogMjBweDtcclxuXHRcdFx0fVxyXG5cdFx0fVxyXG5cclxuXHR9XHJcbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */

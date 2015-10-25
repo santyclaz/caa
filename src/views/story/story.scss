@@ -1,7 +1,36 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/utility.scss";
+
 section.story-view {
 	text-align: center;
 
 	.jumbo {
 		height: 400px;
+	}
+
+	.content {
+		$info-bubble-diameter: 150px;
+
+		position: relative;
+		padding-top: $info-bubble-diameter / 2;
+
+		.info-bubble {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			width: $info-bubble-diameter;
+			height: $info-bubble-diameter;
+
+			background: $accentColor1;
+
+			.text {
+				@include vertical-align();
+				color: #FFF;
+				font-size: 20px;
+			}
+		}
+
 	}
 }
