@@ -35,3 +35,38 @@
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
+
+/**
+ * Horizontal align element
+ */
+
+@mixin horizontal-align($position: relative) {
+	position: $position;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+
+/**
+ * Translate
+ */
+
+@mixin translateX($value) {
+	-webkit-transform: translateX($value);
+	-ms-transform: translateX($value);
+	transform: translateX($value);
+}
+
+@mixin translateY($value) {
+	-webkit-transform: translateY($value);
+	-ms-transform: translateY($value);
+	transform: translateY($value);
+}
+
+@mixin translate($x, $y) {
+	-webkit-transform: translate($x, $y);
+	-ms-transform: translate($x, $y);
+	transform: translate($x, $y);
+}
