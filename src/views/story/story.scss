@@ -72,9 +72,10 @@ section.story-view {
 				}
 
 				.entry-img {
+					@include translateY(-50%);
+
 					position: absolute;
 					top: 0;
-					@include translateY(-50%);
 
 					background: gray;
 					width: $entry-img-diameter;
