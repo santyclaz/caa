@@ -10,14 +10,40 @@ section.wedding-view {
 	.content {
 		position: relative;
 
-		$category-img-diameter: 200px;
-		.category-img {
-			@include circleContainer();
+		.category {
+			$category-img-diameter: 200px;
+			.category-img {
+				@include circleContainer();
 
-			width: $category-img-diameter;
-			height: $category-img-diameter;
+				width: $category-img-diameter;
+				height: $category-img-diameter;
 
-			img {
+				img {
+					height: 100%;
+				}
+			}
+		}
+
+		.category.venue {
+			.category-img img {
+				@include translateX(-98px);
+			}
+		}
+
+		.category.schedule {
+			.category-img img {
+				width: 100%;
+			}
+		}
+
+		.category.attire {
+			.category-img img {
+				@include translateX(-22px);
+			}
+		}
+
+		.category.hotels {
+			.category-img img {
 				height: 100%;
 			}
 		}
