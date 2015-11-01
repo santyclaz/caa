@@ -10,6 +10,7 @@
 		'caa.views.wedding',
 		// common
 		'caa.common.directives.address',
+		'caa.common.directives.place',
 		// lib
 		'ui.router',
 		'ui.bootstrap',

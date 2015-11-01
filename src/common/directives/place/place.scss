@@ -1,0 +1,22 @@
+@import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/utility.scss";
+
+.place {
+	$img-diameter: 150px;
+
+	.place-img {
+		@include circleContainer();
+		float: left;
+
+		width: $img-diameter;
+		height: $img-diameter;
+
+		img {
+			height: 100%;
+		}
+	}
+
+	.place-info {
+		float: left;
+	}
+}

@@ -1,0 +1,22 @@
+<div class="place">
+	<div class="place-img" ng-if="place.img">
+		<img ng-src="{{place.img}}" />
+	</div>
+	<div class="place-info">
+		<h3>{{place.name}}</h3>
+		<ul>
+			<li ng-if="place.website">
+				<a ng-href="{{place.website}}">{{place.website}}</a>
+			</li>
+			<li ng-if="place.address">
+				<div address ng-model="place.address"></div>
+			</li>
+			<li ng-if="place.phone">
+				{{place.phone}}
+			</li>
+			<li ng-if="place.description">
+				{{place.description}}
+			</li>
+		</ul>
+	</div>
+</div>

@@ -10,6 +10,10 @@ body {
 	font-family: 'Merriweather', serif;
 }
 
+footer {
+	height: 100px;
+}
+
 
 /**
  *	Typography
@@ -22,9 +26,23 @@ body {
 	text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3 {
+h1, h2 {
 	@extend .sweet-pea;
 	color: $accentColor3;
+}
+
+h1 {
+	font-size: 48px;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+h3 {
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 
@@ -47,6 +65,6 @@ h1, h2, h3 {
 .section-description {
 	margin-top: 50px;
 
-	font-size: 24px;
+	font-size: 18px;
 	font-style: italic;
 }

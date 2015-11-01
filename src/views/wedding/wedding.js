@@ -10,10 +10,13 @@
 	];
 	function WeddingController($scope) {
 
-		$scope.locations = [
+		$scope.category = {
+			img: 'assets/imgs/story/el-farallon.jpg',
+		};
+
+		$scope.places = [
 			{
 				name: 'Honda-ya',
-				img: 'assets/imgs/story/el-farallon.jpg',
 				website: 'www.google.com',
 				address: {
 					address1: '1234 blah',
@@ -21,7 +24,9 @@
 					city: 'Tustin',
 					state: 'CA',
 					country: 'USA'
-				}
+				},
+				phone: '(555) 555-5555',
+				description: 'Japanese deliciousness',
 			}
 		];
 	}

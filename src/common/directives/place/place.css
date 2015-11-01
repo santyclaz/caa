@@ -1,0 +1,37 @@
+/**
+ *	Variables
+ */
+/**
+ * Aspect-ratios (for container of images)
+ *
+ * The following mixin adds attributes to achieve the following:
+ * 1) Given a width, makes target container maintain given aspect ratio
+ * 2) Crop any excessive content that exceeds aspect ratio
+ *
+ * http://stackoverflow.com/a/25404121/1217025
+ */
+/**
+ * Vertical align element
+ */
+/**
+ * Horizontal align element
+ */
+/**
+ * Translate
+ */
+/**
+ * Shapes
+ */
+.place .place-img {
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+  width: 150px;
+  height: 150px; }
+  .place .place-img img {
+    height: 100%; }
+
+.place .place-info {
+  float: left; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCIuLi8uLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2NzcyIsInBsYWNlL3BsYWNlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0dBRUc7QUNGSDs7Ozs7Ozs7R0FRRztBQWtCSDs7R0FFRztBQVVIOztHQUVHO0FBV0g7O0dBRUc7QUFxQkg7O0dBRUc7QUN6RUgsTUFBTSxDQUdMLFVBQVUsQ0FBQztFRDZFWCxhQUFhLEVBQUUsR0FBSTtFQUNuQixRQUFRLEVBQUUsTUFBTztFQzVFaEIsS0FBSyxFQUFFLElBQUs7RUFFWixLQUFLLEVBTlMsS0FBSztFQU9uQixNQUFNLEVBUFEsS0FBSyxHQVluQjtFQWJGLE1BQU0sQ0FHTCxVQUFVLENBT1QsR0FBRyxDQUFDO0lBQ0gsTUFBTSxFQUFFLElBQUssR0FDYjs7QUFaSCxNQUFNLENBZUwsV0FBVyxDQUFDO0VBQ1gsS0FBSyxFQUFFLElBQUssR0FDWiIsImZpbGUiOiJwbGFjZS9wbGFjZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6W251bGwsbnVsbCwiQGltcG9ydCBcIi4uLy4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3NcIjtcbkBpbXBvcnQgXCIuLi8uLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2Nzc1wiO1xuXG4ucGxhY2Uge1xuXHQkaW1nLWRpYW1ldGVyOiAxNTBweDtcblxuXHQucGxhY2UtaW1nIHtcblx0XHRAaW5jbHVkZSBjaXJjbGVDb250YWluZXIoKTtcblx0XHRmbG9hdDogbGVmdDtcblxuXHRcdHdpZHRoOiAkaW1nLWRpYW1ldGVyO1xuXHRcdGhlaWdodDogJGltZy1kaWFtZXRlcjtcblxuXHRcdGltZyB7XG5cdFx0XHRoZWlnaHQ6IDEwMCU7XG5cdFx0fVxuXHR9XG5cblx0LnBsYWNlLWluZm8ge1xuXHRcdGZsb2F0OiBsZWZ0O1xuXHR9XG59XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */

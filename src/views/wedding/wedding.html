@@ -10,26 +10,17 @@
 			Before and after wedding, take the time to visit some great spots in the Los Angeles area. It's full of history, beauty, and good food.
 		</p>
 
-		<div ng-repeat="location in locations" class="location row">
-			<div class="col-sm-3">
-				<div class="location-img" scale-to-fit-container>
-					<img ng-src="{{location.img}}" />
+		<section class="sub-section">
+			<div class="col-sm-4">
+				<div class="category-img">
+					<img ng-src="{{category.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-9">
-				<ul>
-					<li>
-						{{location.name}}
-					</li>
-					<li>
-						<a href="{{location.website}}">{{location.website}}</a>
-					</li>
-					<li>
-						<div address ng-model="location.address"></div>
-					</li>
-				</ul>
+			<div class="col-sm-8">
+				<h2>Good Eats</h2>
+				<div ng-repeat="place in places" place ng-model="place"></div>
 			</div>
-		</div>
+		</section>
 
 	</div>
 

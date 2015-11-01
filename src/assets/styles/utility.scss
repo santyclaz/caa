@@ -28,7 +28,7 @@
  * Vertical align element
  */
 
-@mixin vertical-align($position: relative) {
+@mixin verticalAlign($position: relative) {
 	position: $position;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
@@ -40,7 +40,7 @@
  * Horizontal align element
  */
 
-@mixin horizontal-align($position: relative) {
+@mixin horizontalAlign($position: relative) {
 	position: $position;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
@@ -78,4 +78,9 @@
 
 @mixin circle {
 	border-radius: 50%;
+}
+
+@mixin circleContainer {
+	border-radius: 50%;
+	overflow: hidden;
 }

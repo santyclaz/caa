@@ -10,12 +10,12 @@ section.wedding-view {
 	.content {
 		position: relative;
 
-		$location-img-diameter: 150px;
-		.location-img {
-			@include circle();
+		$category-img-diameter: 200px;
+		.category-img {
+			@include circleContainer();
 
-			width: $location-img-diameter;
-			height: $location-img-diameter;
+			width: $category-img-diameter;
+			height: $category-img-diameter;
 
 			img {
 				height: 100%;
