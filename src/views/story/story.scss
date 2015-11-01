@@ -152,5 +152,20 @@ section.story-view {
 				}
 			}
 		}
+
+		.timeline {
+			#dragon-fruit {
+				@include translateX(-35px);
+			}
+			#andrew-1 {
+				transform: scale(1.1);
+			}
+			#us-1 {
+				@include translateX(-22px);
+			}
+			#el-farallon {
+				@include translateX(-12px);
+			}
+		}
 	}
 }
