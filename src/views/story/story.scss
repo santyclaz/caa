@@ -37,6 +37,7 @@ section.story-view {
 			$timeline-line-width: 4px;
 			$entry-img-diameter: 150px;
 			$entry-img-radius: $entry-img-diameter / 2;
+			$entry-img-horizontal-padding: 15px;
 			$entry-horizontal-padding: 60px;
 			$entry-vertical-padding: 20px;
 
@@ -47,11 +48,51 @@ section.story-view {
 
 			.center-line {
 				@include horizontal-align(absolute);
+				top: 0;
 
 				height: 100%;
 				width: $timeline-line-width;
 
 				background: $accentColor2;
+
+				.heart {
+					@include translateX(-50%);
+					position: absolute;
+					left: 50%;
+					bottom: 0;
+				}
+
+				.heart {
+					$color: red;
+					$width: 30px;
+					$height: 40px;
+					.top-left, .top-right {
+						@include translateY(-70%);
+						border-top-left-radius: 50%;
+						border-top-right-radius: 50%;
+						background: $color;
+						width: $width;
+						height: $width;
+						top: 0;
+					}
+					.top-left {
+						position: absolute;
+						left: 0;
+						border-bottom-left-radius: 20px;
+					}
+					.top-right {
+						position: absolute;
+						right: 0;
+						border-bottom-right-radius: 20px;
+					}
+					.bottom {
+						border-top: $height solid $color;
+						border-left: $width solid transparent;
+						border-right: $width solid transparent;
+						border-top-left-radius: 2px;
+						border-top-right-radius: 2px;
+					}
+				}
 			}
 
 			.entry {
@@ -80,6 +121,14 @@ section.story-view {
 					background: gray;
 					width: $entry-img-diameter;
 					height: $entry-img-diameter;
+
+					&.img-circle {
+						overflow: hidden;
+					}
+
+					img {
+						height: 100%;
+					}
 				}
 			}
 
@@ -90,17 +139,17 @@ section.story-view {
 					right: 0;
 				}
 				.entry-img {
-					left: 0;
+					left: $entry-img-horizontal-padding;
 				}
 			}
 			.entry.right {
 				padding-left: $entry-horizontal-padding;
-				text-align: right;
+				text-align: left;
 				.entry-line {
 					left: 0;
 				}
 				.entry-img {
-					right: 0;
+					right: $entry-img-horizontal-padding;
 				}
 			}
 		}
