@@ -70,3 +70,12 @@
 	-ms-transform: translate($x, $y);
 	transform: translate($x, $y);
 }
+
+
+/**
+ * Shapes
+ */
+
+.img-circle {
+	border-radius: 50%;
+}

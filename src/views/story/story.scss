@@ -15,10 +15,12 @@ section.story-view {
 		padding-top: $info-bubble-diameter / 2;
 
 		.info-bubble {
+			@extend .img-circle;
+			@include translate(-50%, -50%);
+
 			position: absolute;
 			top: 0;
 			left: 50%;
-			@include translate(-50%, -50%);
 
 			width: $info-bubble-diameter;
 			height: $info-bubble-diameter;
@@ -48,6 +50,7 @@ section.story-view {
 
 			.center-line {
 				@include horizontal-align(absolute);
+
 				top: 0;
 
 				height: 100%;
@@ -113,6 +116,7 @@ section.story-view {
 				}
 
 				.entry-img {
+					@extend .img-circle;
 					@include translateY(-50%);
 
 					position: absolute;
@@ -122,9 +126,7 @@ section.story-view {
 					width: $entry-img-diameter;
 					height: $entry-img-diameter;
 
-					&.img-circle {
-						overflow: hidden;
-					}
+					overflow: hidden;
 
 					img {
 						height: 100%;
