@@ -14,6 +14,12 @@
 				controller: 'story',
 			});
 
+			$stateProvider.state('wedding', {
+				url: '/wedding',
+				templateUrl: 'views/wedding/wedding.html',
+				controller: 'wedding',
+			});
+
 			$stateProvider.state('rsvp', {
 				url: '/rsvp',
 				templateUrl: 'views/rsvp/rsvp.html',

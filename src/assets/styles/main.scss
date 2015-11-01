@@ -32,7 +32,21 @@ h1, h2, h3 {
  *	Aspect ratios
  */
 
+// .aspect-ratio-1-1
+@include makeAspectRatioClass(1,1);
 // .aspect-ratio-3-2
 @include makeAspectRatioClass(3,2);
 // .aspect-ratio-4-3
 @include makeAspectRatioClass(4,3);
+
+
+/**
+ * General classes
+ */
+
+.section-description {
+	margin-top: 50px;
+
+	font-size: 24px;
+	font-style: italic;
+}

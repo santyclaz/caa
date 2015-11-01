@@ -15,7 +15,7 @@ section.story-view {
 		padding-top: $info-bubble-diameter / 2;
 
 		.info-bubble {
-			@extend .img-circle;
+			@include circle();
 			@include translate(-50%, -50%);
 
 			position: absolute;
@@ -116,7 +116,7 @@ section.story-view {
 				}
 
 				.entry-img {
-					@extend .img-circle;
+					@include circle();
 					@include translateY(-50%);
 
 					position: absolute;

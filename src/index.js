@@ -7,6 +7,9 @@
 		'caa.views.navbar',
 		'caa.views.rsvp',
 		'caa.views.story',
+		'caa.views.wedding',
+		// common
+		'caa.common.directives.address',
 		// lib
 		'ui.router',
 		'ui.bootstrap',

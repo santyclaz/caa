@@ -1,0 +1,26 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/utility.scss";
+
+section.wedding-view {
+
+	.jumbo {
+		height: 400px;
+	}
+
+	.content {
+		position: relative;
+
+		$location-img-diameter: 150px;
+		.location-img {
+			@include circle();
+
+			width: $location-img-diameter;
+			height: $location-img-diameter;
+
+			img {
+				height: 100%;
+			}
+		}
+
+	}
+}

@@ -76,6 +76,6 @@
  * Shapes
  */
 
-.img-circle {
+@mixin circle {
 	border-radius: 50%;
 }

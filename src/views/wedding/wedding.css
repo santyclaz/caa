@@ -1,0 +1,37 @@
+/**
+ *	Variables
+ */
+/**
+ * Aspect-ratios (for container of images)
+ *
+ * The following mixin adds attributes to achieve the following:
+ * 1) Given a width, makes target container maintain given aspect ratio
+ * 2) Crop any excessive content that exceeds aspect ratio
+ *
+ * http://stackoverflow.com/a/25404121/1217025
+ */
+/**
+ * Vertical align element
+ */
+/**
+ * Horizontal align element
+ */
+/**
+ * Translate
+ */
+/**
+ * Shapes
+ */
+section.wedding-view .jumbo {
+  height: 400px; }
+
+section.wedding-view .content {
+  position: relative; }
+  section.wedding-view .content .location-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px; }
+    section.wedding-view .content .location-img img {
+      height: 100%; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCIuLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2NzcyIsIndlZGRpbmcvd2VkZGluZy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FDRkg7Ozs7Ozs7O0dBUUc7QUFrQkg7O0dBRUc7QUFVSDs7R0FFRztBQVdIOztHQUVHO0FBcUJIOztHQUVHO0FDekVILE9BQU8sYUFBYSxDQUVuQixNQUFNLENBQUM7RUFDTixNQUFNLEVBQUUsS0FBTSxHQUNkOztBQUpGLE9BQU8sYUFBYSxDQU1uQixRQUFRLENBQUM7RUFDUixRQUFRLEVBQUUsUUFBUyxHQWNuQjtFQXJCRixPQUFPLGFBQWEsQ0FNbkIsUUFBUSxDQUlQLGFBQWEsQ0FBQztJRGtFZixhQUFhLEVBQUUsR0FBSTtJQy9EakIsS0FBSyxFQUprQixLQUFLO0lBSzVCLE1BQU0sRUFMaUIsS0FBSyxHQVU1QjtJQW5CSCxPQUFPLGFBQWEsQ0FNbkIsUUFBUSxDQUlQLGFBQWEsQ0FNWixHQUFHLENBQUM7TUFDSCxNQUFNLEVBQUUsSUFBSyxHQUNiIiwiZmlsZSI6IndlZGRpbmcvd2VkZGluZy5jc3MiLCJzb3VyY2VzQ29udGVudCI6W251bGwsbnVsbCwiQGltcG9ydCBcIi4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3NcIjtcbkBpbXBvcnQgXCIuLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2Nzc1wiO1xuXG5zZWN0aW9uLndlZGRpbmctdmlldyB7XG5cblx0Lmp1bWJvIHtcblx0XHRoZWlnaHQ6IDQwMHB4O1xuXHR9XG5cblx0LmNvbnRlbnQge1xuXHRcdHBvc2l0aW9uOiByZWxhdGl2ZTtcblxuXHRcdCRsb2NhdGlvbi1pbWctZGlhbWV0ZXI6IDE1MHB4O1xuXHRcdC5sb2NhdGlvbi1pbWcge1xuXHRcdFx0QGluY2x1ZGUgY2lyY2xlKCk7XG5cblx0XHRcdHdpZHRoOiAkbG9jYXRpb24taW1nLWRpYW1ldGVyO1xuXHRcdFx0aGVpZ2h0OiAkbG9jYXRpb24taW1nLWRpYW1ldGVyO1xuXG5cdFx0XHRpbWcge1xuXHRcdFx0XHRoZWlnaHQ6IDEwMCU7XG5cdFx0XHR9XG5cdFx0fVxuXG5cdH1cbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */
