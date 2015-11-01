@@ -14,6 +14,13 @@ footer {
 	height: 100px;
 }
 
+section .section-description {
+	margin-top: 50px;
+
+	font-size: 18px;
+	font-style: italic;
+}
+
 
 /**
  *	Typography
@@ -59,12 +66,9 @@ h3 {
 
 
 /**
- * General classes
+ * Grid classes
  */
 
-.section-description {
-	margin-top: 50px;
-
-	font-size: 18px;
-	font-style: italic;
+.content-width {
+	width: inherit;
 }
