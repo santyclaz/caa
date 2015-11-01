@@ -18,7 +18,7 @@ section.story-view {
 			position: absolute;
 			top: 0;
 			left: 50%;
-			transform: translate(-50%, -50%);
+			@include translate(-50%, -50%);
 
 			width: $info-bubble-diameter;
 			height: $info-bubble-diameter;
