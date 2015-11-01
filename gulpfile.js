@@ -96,11 +96,12 @@ function compileSass(startWatch) {
 		.pipe(sourcemaps.write())
 		// write the resulting CSS to dest
 		.pipe(gulp.dest(config.dest));
-};
+}
 compileSass.config = {
 	src: [
 		ENV.client.path + '/assets/styles/*.scss',
-		ENV.client.path + '/views/**/*.scss'
+		ENV.client.path + '/common/directives/**/*.scss',
+		ENV.client.path + '/views/**/*.scss',
 	],
 	dest: function(file) {
 		// write resulting CSS to same directory
