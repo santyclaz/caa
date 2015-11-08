@@ -27,18 +27,18 @@ nav.navbar {
 			padding: $item-padding;
 
 			color: $accent-color-1;
+			text-transform: uppercase;
 
 			&:hover, &:active, &:focus {
 				background: transparent;
 				color: $default-text-color;
 			}
 		}
-	}
 
-	ul.navbar-nav.pull-right {
-		li:last-child > a {
-			padding-right: 0;
+		&.pull-right {
+			li:last-child > a {
+				padding-right: 0;
+			}
 		}
 	}
-
 }
