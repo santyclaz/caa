@@ -9,7 +9,7 @@ section.story-view {
 	}
 
 	.content {
-		$info-bubble-diameter: $circle-diameter-lg;
+		$info-bubble-diameter: 150px;
 
 		position: relative;
 		padding-top: $info-bubble-diameter / 2;
