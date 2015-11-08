@@ -11,9 +11,9 @@ section.wedding-view {
 		position: relative;
 
 		.category {
-			$category-img-diameter: 200px;
 			.category-img {
 				@include circleContainer();
+				$category-img-diameter: 200px;
 
 				width: $category-img-diameter;
 				height: $category-img-diameter;
@@ -21,6 +21,10 @@ section.wedding-view {
 				img {
 					height: 100%;
 				}
+			}
+
+			.category-content {
+				max-width: 550px;
 			}
 		}
 
@@ -37,7 +41,7 @@ section.wedding-view {
 
 			dl {
 				dt {
-					width: 100px;
+					width: 130px;
 				}
 				dd {
 					margin-left: 135px;

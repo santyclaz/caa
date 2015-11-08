@@ -57,7 +57,7 @@
 						// TODO: see if this can be refactored
 						reservation: {
 							url: 'https://resweb.passkey.com/go/leungho',
-							price: '$174',
+							price: '$174/night',
 						}
 					},
 					{
@@ -75,9 +75,11 @@
 							label: 'hamptoninn3.hilton.com'
 						},
 						reservation: {
-							price: '$136',
-							fixedPrice: true
-						}
+							price: '$136/night',
+							fixedPrice: true,
+							details: 'Book on the website with group code CLA.'
+						},
+						description: 'Includes complimentary breakfast.'
 					}
 				]
 			},

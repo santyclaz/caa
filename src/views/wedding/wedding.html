@@ -16,7 +16,7 @@
 					<img ng-src="{{categories.venue.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-6 content-width category-content">
 				<h2>{{categories.venue.name}}</h2>
 				<div ng-repeat="place in categories.venue.places" place ng-model="place"></div>
 			</div>
@@ -28,14 +28,16 @@
 					<img ng-src="{{categories.schedule.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-6 content-width category-content">
 				<h2>{{categories.schedule.name}}</h2>
 				<dl class="dl-horizontal dt-text-left">
+					<dt>4:00 PM</dt>
+					<dd>Seating begins</dd>
 					<dt>4:30 PM</dt>
 					<dd>Ceremony</dd>
 					<dt>5:00 PM</dt>
 					<dd>Cocktail Hour</dd>
-					<dt>6:00 - 10:00 PM</dt>
+					<dt>6:00-10:00 PM</dt>
 					<dd>Reception & Dance Party</dd>
 				</dl>
 			</div>
@@ -47,7 +49,7 @@
 					<img ng-src="{{categories.attire.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-6 content-width category-content">
 				<h2>{{categories.attire.name}}</h2>
 				<h3>Summer Cocktail</h3>
 				<p>
