@@ -9,7 +9,7 @@ section.story-view {
 	}
 
 	.content {
-		$info-bubble-diameter: 150px;
+		$info-bubble-diameter: $circle-diameter-lg;
 
 		position: relative;
 		padding-top: $info-bubble-diameter / 2;
@@ -37,7 +37,7 @@ section.story-view {
 		.timeline {
 			$timeline-horizontal-spacing: 20px;
 			$timeline-line-width: 4px;
-			$entry-img-diameter: 150px;
+			$entry-img-diameter: $circle-diameter-lg;
 			$entry-img-radius: $entry-img-diameter / 2;
 			$entry-img-horizontal-padding: 15px;
 			$entry-horizontal-padding: 60px;

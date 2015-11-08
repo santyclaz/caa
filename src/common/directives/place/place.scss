@@ -2,7 +2,7 @@
 @import "../../../assets/styles/utility.scss";
 
 .place {
-	$img-diameter: 150px;
+	$img-diameter: $circle-diameter-lg;
 
 	.place-img {
 		@include circleContainer();
