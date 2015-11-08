@@ -4,6 +4,8 @@
 .place {
 	$img-diameter: $circle-diameter-lg;
 
+	overflow: hidden;
+
 	.place-img {
 		@include circleContainer();
 		float: left;
@@ -18,5 +20,10 @@
 
 	.place-info {
 		float: left;
+
+		ul.place-details {
+			list-style: none;
+			padding-left: 0;
+		}
 	}
 }
