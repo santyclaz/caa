@@ -11,6 +11,11 @@ nav.navbar {
 	ul.navbar-nav {
 		li > a {
 			color: $accent-color-1;
+
+			&:hover, &:active, &:focus {
+				background: transparent;
+				color: $default-text-color;
+			}
 		}
 	}
 
