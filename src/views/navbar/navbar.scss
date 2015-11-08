@@ -2,20 +2,42 @@
 @import "../../assets/styles/utility.scss";
 
 nav.navbar {
+	$item-line-height: 20px;
+	$item-padding: 15px;
+	$height: $item-line-height + $item-padding * 2;
 
-	.navbar-brand {
-		@include sweet-pea;
-		color: $accent-color-3
+	margin: 15px 0;
+
+	.logo {
+		@include bombshell;
+
+		display: inline-block;
+
+		font-size: 35px;
+		line-height: 23px;
+		padding-top: 20px;
+
+		color: $accent-color-3;
+		text-decoration: none;
 	}
 
 	ul.navbar-nav {
 		li > a {
+			line-height: $item-line-height;
+			padding: $item-padding;
+
 			color: $accent-color-1;
 
 			&:hover, &:active, &:focus {
 				background: transparent;
 				color: $default-text-color;
 			}
+		}
+	}
+
+	ul.navbar-nav.pull-right {
+		li:last-child > a {
+			padding-right: 0;
 		}
 	}
 

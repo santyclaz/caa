@@ -9,6 +9,13 @@
 	text-rendering: optimizeLegibility;
 }
 
+@mixin bombshell {
+	font-family: 'BombshellPro';
+	font-weight: normal;
+	-webkit-font-smoothing:antialiased;
+	text-rendering: optimizeLegibility;
+}
+
 /**
  *	Alignment
  */

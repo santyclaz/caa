@@ -6,17 +6,30 @@
 		<h3>{{place.name}}</h3>
 		<ul class="place-details">
 			<li ng-if="place.website">
-				<a ng-href="{{place.website}}">{{place.website}}</a>
+				<a ng-href="{{place.website.url}}" target="_blank">
+					{{place.website.label ? place.website.label : place.website.url}}
+				</a>
 			</li>
 			<li ng-if="place.address">
 				<div address ng-model="place.address"></div>
 			</li>
+			<li ng-if="place.mapLink">
+				<a ng-href="{{place.mapLink}}" target="_blank">map</a>
+			</li>
 			<li ng-if="place.phone">
 				{{place.phone}}
 			</li>
-			<li ng-if="place.description">
-				{{place.description}}
-			</li>
 		</ul>
+		<div class="description" ng-if="place.reservation">
+			<div ng-if="place.reservation.price && place.reservation.url">
+				Discounted rate<span ng-hide="place.reservation.fixedPrice">s starting</span> at {{place.reservation.price}}, click <a ng-href="{{place.reservation.url}}" target="_blank">here</a> to book.
+			</div>
+			<div ng-if="place.reservation.price && !place.reservation.url">
+				Discounted rate<span ng-hide="place.reservation.fixedPrice">s starting</span> at {{place.reservation.price}}.
+			</div>
+		</div>
+		<div class="description" ng-if="place.description">
+			{{place.description}}
+		</div>
 	</div>
 </div>

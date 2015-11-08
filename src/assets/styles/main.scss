@@ -31,8 +31,8 @@ section.sub-section {
  */
 
 h1, h2 {
-	@include sweet-pea;
-	color: $accentColor3;
+	@include bombshell;
+	color: $accent-color-3;
 }
 
 h1 {
@@ -47,6 +47,14 @@ h3 {
 	font-size: 18px;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+.font-sweetpea {
+	@include sweet-pea;
+}
+
+.font-bombshell {
+	@include bombshell;
 }
 
 
