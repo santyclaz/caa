@@ -1,0 +1,17 @@
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/utility.scss";
+
+nav.navbar {
+
+	.navbar-brand {
+		@include sweet-pea;
+		color: $accent-color-3
+	}
+
+	ul.navbar-nav {
+		li > a {
+			color: $accent-color-1;
+		}
+	}
+
+}

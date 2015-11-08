@@ -30,15 +30,8 @@ section.sub-section {
  *	Typography
  */
 
-.sweet-pea {
-	font-family: 'sweet-pea';
-	font-weight: normal;
-	-webkit-font-smoothing:antialiased;
-	text-rendering: optimizeLegibility;
-}
-
 h1, h2 {
-	@extend .sweet-pea;
+	@include sweet-pea;
 	color: $accentColor3;
 }
 

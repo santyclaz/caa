@@ -25,7 +25,7 @@ section.story-view {
 			width: $info-bubble-diameter;
 			height: $info-bubble-diameter;
 
-			background: $accentColor1;
+			background: $accent-color-1;
 
 			.text {
 				@include verticalAlign();
@@ -55,7 +55,7 @@ section.story-view {
 				height: 100%;
 				width: $timeline-line-width;
 
-				background: $accentColor2;
+				background: $accent-color-2;
 
 				.heart {
 					@include translateX(-50%);
@@ -111,7 +111,7 @@ section.story-view {
 					width: 90%;
 					height: $timeline-line-width;
 
-					background: $accentColor2;
+					background: $accent-color-2;
 				}
 
 				.entry-img {

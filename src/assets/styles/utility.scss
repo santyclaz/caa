@@ -1,31 +1,16 @@
 /**
- * Aspect-ratios (for container of images)
- *
- * The following mixin adds attributes to achieve the following:
- * 1) Given a width, makes target container maintain given aspect ratio
- * 2) Crop any excessive content that exceeds aspect ratio
- *
- * http://stackoverflow.com/a/25404121/1217025
+ *	Typography
  */
 
-@mixin aspectRatio($width, $height) {
-	height: 0px;
-	padding-bottom: percentage($height/$width);
-	overflow: hidden;
-	img {
-		width: 100%;
-	}
+@mixin sweet-pea {
+	font-family: 'sweet-pea';
+	font-weight: normal;
+	-webkit-font-smoothing:antialiased;
+	text-rendering: optimizeLegibility;
 }
-// Aspect-ratio class factory
-@mixin makeAspectRatioClass($width, $height) {
-	.aspect-ratio-#{$width}-#{$height} {
-		@include aspectRatio($width, $height);
-	}
-}
-
 
 /**
- * Vertical align element
+ *	Alignment
  */
 
 @mixin verticalAlign($position: relative) {
@@ -35,10 +20,6 @@
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
-
-/**
- * Horizontal align element
- */
 
 @mixin horizontalAlign($position: relative) {
 	position: $position;
@@ -50,7 +31,7 @@
 
 
 /**
- * Translate
+ *	Translate
  */
 
 @mixin translateX($value) {
@@ -73,7 +54,7 @@
 
 
 /**
- * Shapes
+ *	Shapes
  */
 
 @mixin circle {
@@ -83,4 +64,30 @@
 @mixin circleContainer {
 	border-radius: 50%;
 	overflow: hidden;
+}
+
+
+/**
+ *	Aspect-ratios (for container of images)
+ *
+ *	The following mixin adds attributes to achieve the following:
+ *	1) Given a width, makes target container maintain given aspect ratio
+ *	2) Crop any excessive content that exceeds aspect ratio
+ *
+ *	http://stackoverflow.com/a/25404121/1217025
+ */
+
+@mixin aspectRatio($width, $height) {
+	height: 0px;
+	padding-bottom: percentage($height/$width);
+	overflow: hidden;
+	img {
+		width: 100%;
+	}
+}
+// Aspect-ratio class factory
+@mixin makeAspectRatioClass($width, $height) {
+	.aspect-ratio-#{$width}-#{$height} {
+		@include aspectRatio($width, $height);
+	}
 }
