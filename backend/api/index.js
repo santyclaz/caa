@@ -1,5 +1,5 @@
 /**
- * API routing
+ *	Index
  */
 
 exports.register = function (server, options, next) {
@@ -19,7 +19,7 @@ exports.register = function (server, options, next) {
 		method: 'GET',
 		path: '/',
 		handler: function (request, reply) {
-			var payload = "I am the API!"
+			var payload = "I am the API!";
 			reply(payload);
 		}
 	});
@@ -38,5 +38,5 @@ exports.register = function (server, options, next) {
 };
 
 exports.register.attributes = {
-	name: 'api'
+	name: 'index'
 };

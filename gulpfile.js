@@ -25,6 +25,9 @@ var traceur = require('gulp-traceur');
  */
 
 var ENV = {
+	api: {
+		path: 'backend/api'
+	},
 	client: {
 		path: 'src'
 	}
@@ -51,8 +54,8 @@ gulp.task('sass', sassTask);
 
 function serveTask() {
 	var options = {
-		api: true,
-		client: true
+		api: ENV.api,
+		client: ENV.client
 	};
 
 	// TODO: look into usage & demand npm packages for options

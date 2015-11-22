@@ -1,3 +1,5 @@
+var path = require('path');
+var fs = require('fs');
 var _ = require('lodash');
 var Hapi = require('hapi');
 
@@ -6,7 +8,7 @@ var Hapi = require('hapi');
  * API
  */
 
-var API = {
+module.exports = API = {
 	start: start
 };
 
@@ -15,6 +17,7 @@ var defaultOpts = {
 	port: 7070,
 	api: {
 		path: 'api',
+		urlPath: 'api'
 	},
 	client: {
 		path: 'src',
@@ -49,23 +52,7 @@ function start(config) {
 	// register API if set
 	if ('api' in config) {
 		var apiConfig = _.extend({}, defaultOpts.api, config.api);
-		var apiPath = '/' + apiConfig.path;
-
-		// register API routes
-		server.register(
-			{
-				register: require('./api')
-			},
-			{
-				routes: {
-					prefix: apiPath
-				}
-			},
-			function (err) {
-				if (err) {
-					console.log('api', err);
-				}
-			});
+		registerApiEndpoints(server, apiConfig.path, apiConfig.urlPath);
 	}
 
 	// register client if set
@@ -92,5 +79,44 @@ function start(config) {
 }
 
 
-// Expose API
-module.exports = API;
+// function to register all API files in given rootDir
+// endpoints will be namespaced under given rootUrlPath
+function registerApiEndpoints(server, rootDir, rootUrlPath) {
+	var API_DIR = rootDir;
+	var API_URL_PATH = rootUrlPath;
+
+	// guarantee trailing slash in API_DIR
+	if (rootDir.slice(-1) !== '/') {
+		API_DIR = rootDir + '/';
+	}
+
+	// guarantee leading slash in API_URL_PATH
+	if (rootUrlPath.slice(0) !== '/') {
+		API_URL_PATH = '/' + rootUrlPath;
+	}
+
+	var apis = fs.readdirSync(API_DIR), api;
+	for (var i = 0; i < apis.length; i++) {
+		api = API_DIR + apis[i];
+		// register all *.js files in API_DIR
+		if (api.match(/.*\.js$/)) {
+			api = path.resolve(api); // turn into absolute path
+			server.register(
+				{
+					register: require(api)
+				},
+				{
+					routes: {
+						prefix: API_URL_PATH
+					}
+				},
+				onRegisterApiError);
+		}
+	}
+}
+
+function onRegisterApiError(e) {
+	if (e) {
+		console.log('onRegisterApiError', e);
+	}
+}
