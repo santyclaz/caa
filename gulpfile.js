@@ -26,7 +26,8 @@ var traceur = require('gulp-traceur');
 
 var ENV = {
 	api: {
-		path: 'backend/api'
+		path: 'backend/api',
+		libPath: 'backend/lib'
 	},
 	client: {
 		path: 'src'

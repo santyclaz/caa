@@ -2,10 +2,11 @@ var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 var Hapi = require('hapi');
+var Hoek = require('hoek');
 
 
 /**
- * API
+ *	API
  */
 
 module.exports = API = {
@@ -17,6 +18,7 @@ var defaultOpts = {
 	port: 7070,
 	api: {
 		path: 'api',
+		libPath: 'lib',
 		urlPath: 'api'
 	},
 	client: {
@@ -27,7 +29,7 @@ var defaultOpts = {
 
 
 /**
- * Methods
+ *	Methods
  */
 
 function start(config) {
@@ -52,6 +54,9 @@ function start(config) {
 	// register API if set
 	if ('api' in config) {
 		var apiConfig = _.extend({}, defaultOpts.api, config.api);
+		// register lib plugins
+		registerLibPlugins(server, apiConfig.libPath);
+		// register API endpoints
 		registerApiEndpoints(server, apiConfig.path, apiConfig.urlPath);
 	}
 
@@ -65,16 +70,21 @@ function start(config) {
 				register: require('./client'),
 				options: clientConfig
 			},
-			function (err) {
-				if (err) {
-					console.log('client', err);
+			function (e) {
+				if (e) {
+					console.log('client', e);
 				}
 			});
 	}
 
 	// start the server
-	server.start(function () {
-		 console.log('Server running at:', server.info.uri);
+	server.start(function (e) {
+
+		if (e) {
+			throw e;
+		}
+
+		console.log('Server running at:', server.info.uri);
 	});
 }
 
@@ -114,9 +124,37 @@ function registerApiEndpoints(server, rootDir, rootUrlPath) {
 		}
 	}
 }
-
 function onRegisterApiError(e) {
 	if (e) {
-		console.log('onRegisterApiError', e);
+		throw e;
+	}
+}
+
+// function to register all lib files
+function registerLibPlugins(server, rootDir) {
+	var LIB_DIR = rootDir;
+
+	// guarantee trailing slash in LIB_DIR
+	if (rootDir.slice(-1) !== '/') {
+		LIB_DIR = rootDir + '/';
+	}
+
+	var plugins = fs.readdirSync(LIB_DIR), plugin;
+	for (var i = 0; i < plugins.length; i++) {
+		plugin = LIB_DIR + plugins[i];
+		// register all *.js files in LIB_DIR
+		if (plugin.match(/.*\.js$/)) {
+			plugin = path.resolve(plugin); // turn into absolute path
+			server.register(
+				{
+					register: require(plugin)
+				},
+				onRegisterPluginError);
+		}
+	}
+}
+function onRegisterPluginError(e) {
+	if (e) {
+		throw e;
 	}
 }
