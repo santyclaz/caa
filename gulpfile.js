@@ -92,8 +92,17 @@ function compileSass(startWatch) {
 	return gulp
 		.src(config.src)
 		// run watch + plumber if startWatch is true
-		.pipe(gulpif(!!startWatch, watch(config.src)))
-		.pipe(gulpif(!!startWatch, plumber()))
+		.pipe(gulpif(!!startWatch,
+			watch(config.src)
+		))
+		.pipe(gulpif(!!startWatch,
+			plumber({
+				handleError: function (err) {
+					console.log(err);
+					this.emit('end');
+				}
+			})
+		))
 		// run Sass + sourcemaps
 		.pipe(sourcemaps.init())
 		.pipe(sass())
