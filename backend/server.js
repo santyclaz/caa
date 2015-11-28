@@ -17,12 +17,14 @@ var defaultOpts = {
 	host: 'localhost',
 	port: 7070,
 	api: {
-		path: 'api',
-		libPath: 'lib',
-		urlPath: 'api'
+		rootDir: '',
+		routesDir: 'api',
+		libDir: 'lib',
+		configDir: 'config',
+		baseUrl: 'api'
 	},
 	client: {
-		path: 'src',
+		rootDir: 'src',
 		livereload: true
 	}
 };
@@ -54,10 +56,13 @@ function start(config) {
 	// register API if set
 	if ('api' in config) {
 		var apiConfig = _.extend({}, defaultOpts.api, config.api);
+		var apiDirs = new ApiDirs(apiConfig);
+		var baseUrl = apiConfig.baseUrl;
+
 		// register lib plugins
-		registerLibPlugins(server, apiConfig.libPath);
+		registerLibPlugins(server, apiDirs.lib);
 		// register API endpoints
-		registerApiEndpoints(server, apiConfig.path, apiConfig.urlPath);
+		registerApiEndpoints(server, apiDirs.routes, baseUrl);
 	}
 
 	// register client if set
@@ -85,6 +90,45 @@ function start(config) {
 		}
 
 		console.log('Server running at:', server.info.uri);
+	});
+}
+
+
+/**
+ *	Helper functions
+ */
+
+// Constructor function for API Directory path information
+function ApiDirs(obj) {
+	this.rootDir = 'rootDir' in obj ? obj.rootDir : '';
+	this.routesDir = 'routesDir' in obj ? obj.routesDir : 'api';
+	this.libDir = 'libDir' in obj ? obj.libDir : 'lib';
+	this.configDir = 'configDir' in obj ? obj.configDir : 'config';
+
+	// accessor methods
+	Object.defineProperty(this, 'root', {
+		get: function() {
+			var root = this.rootDir;
+			if (root.slice(-1) !== '/') {
+				root += '/';
+			}
+			return root;
+		}
+	});
+	Object.defineProperty(this, 'routes', {
+		get: function() {
+			return this.root + this.routesDir;
+		}
+	});
+	Object.defineProperty(this, 'lib', {
+		get: function() {
+			return this.root + this.libDir;
+		}
+	});
+	Object.defineProperty(this, 'config', {
+		get: function() {
+			return this.root + this.configDir;
+		}
 	});
 }
 

@@ -5,7 +5,7 @@
  */
 
 var defaultOpts = {
-	// path: string, // required, path to client root dir
+	// rootDir: string, // required, path to client root dir
 	index: 'index.html',
 	livereload: true,
 	spa: true
@@ -19,14 +19,14 @@ exports.register = function (server, options, next) {
 
 	options = typeof options === 'object' ? options : {};
 
-	if (!('path' in options) || typeof options.path !== 'string') {
-		throw new Error('options.path is required');
+	if (!('rootDir' in options) || typeof options.rootDir !== 'string') {
+		throw new Error('options.rootDir is required');
 	}
 	if (('index' in options) && typeof options.index !== 'string') {
 		throw new Error('options.index currently only supports string');
 	}
 
-	var path = options.path;
+	var path = options.rootDir;
 	var index = 'index' in options ? options.index : defaultOpts.index;
 	var spa = 'spa' in options ? options.spa : defaultOpts.spa;
 
