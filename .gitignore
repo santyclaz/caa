@@ -4,3 +4,4 @@ tests
 *.log
 *.swp
 backend/config/*
+.DS_Store
