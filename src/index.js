@@ -5,10 +5,12 @@
 		'caa.routes',
 		// app
 		'caa.views.navbar',
+		'caa.views.photos',
 		'caa.views.rsvp',
 		'caa.views.story',
 		'caa.views.wedding',
 		// common
+		'caa.common.api.Instagram',
 		'caa.common.directives.address',
 		'caa.common.directives.place',
 		// lib

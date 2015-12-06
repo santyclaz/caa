@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 var Hapi = require('hapi');
-var Hoek = require('hoek');
+var jsonfile = require('jsonfile');
 
 
 /**
@@ -59,6 +59,8 @@ function start(config) {
 		var apiDirs = new ApiDirs(apiConfig);
 		var baseUrl = apiConfig.baseUrl;
 
+		// pull in configs
+		registerConfigs(server, apiDirs.config);
 		// register lib plugins
 		registerLibPlugins(server, apiDirs.lib);
 		// register API endpoints
@@ -149,24 +151,25 @@ function registerApiEndpoints(server, rootDir, rootUrlPath) {
 		API_URL_PATH = '/' + rootUrlPath;
 	}
 
-	var apis = fs.readdirSync(API_DIR), api;
-	for (var i = 0; i < apis.length; i++) {
-		api = API_DIR + apis[i];
-		// register all *.js files in API_DIR
-		if (api.match(/.*\.js$/)) {
-			api = path.resolve(api); // turn into absolute path
-			server.register(
-				{
-					register: require(api)
-				},
-				{
-					routes: {
-						prefix: API_URL_PATH
-					}
-				},
-				onRegisterApiError);
-		}
-	}
+	var apis = fs.readdirSync(API_DIR);
+	apis.forEach(
+		function register(api) {
+			var apiPath = API_DIR + api;
+			// register all *.js files in API_DIR
+			if (apiPath.match(/.*\.js$/)) {
+				apiPath = path.resolve(apiPath); // turn into absolute path
+				server.register(
+					{
+						register: require(apiPath)
+					},
+					{
+						routes: {
+							prefix: API_URL_PATH
+						}
+					},
+					onRegisterApiError);
+			}
+		});
 }
 function onRegisterApiError(e) {
 	if (e) {
@@ -183,21 +186,59 @@ function registerLibPlugins(server, rootDir) {
 		LIB_DIR = rootDir + '/';
 	}
 
-	var plugins = fs.readdirSync(LIB_DIR), plugin;
-	for (var i = 0; i < plugins.length; i++) {
-		plugin = LIB_DIR + plugins[i];
-		// register all *.js files in LIB_DIR
-		if (plugin.match(/.*\.js$/)) {
-			plugin = path.resolve(plugin); // turn into absolute path
-			server.register(
-				{
-					register: require(plugin)
-				},
-				onRegisterPluginError);
-		}
-	}
+	var plugins = fs.readdirSync(LIB_DIR);
+	plugins.forEach(
+		function register(plugin) {
+			var pluginPath = LIB_DIR + plugin;
+			// register all *.js files in LIB_DIR
+			if (pluginPath.match(/.*\.js$/)) {
+				pluginPath = path.resolve(pluginPath); // turn into absolute path
+				server.register(
+					{
+						register: require(pluginPath)
+					},
+					onRegisterPluginError);
+			}
+		});
 }
 function onRegisterPluginError(e) {
+	if (e) {
+		throw e;
+	}
+}
+
+// registers config accessor functions to server.config
+function registerConfigs(server, rootDir) {
+	var CONFIG_DIR = rootDir;
+
+	// guarantee trailing slash in CONFIG_DIR
+	if (rootDir.slice(-1) !== '/') {
+		CONFIG_DIR = rootDir + '/';
+	}
+
+	var configs = fs.readdirSync(CONFIG_DIR);
+	var configsMap = {};
+
+	configs.forEach(
+		function register(config) {
+			var configPath = CONFIG_DIR + config, filename;
+			// register all *.json files in CONFIG_DIR
+			if (configPath.match(/.*\.json$/)) {
+				configPath = path.resolve(configPath); // turn into absolute path
+				filename = path.basename(configPath, '.json');
+
+				// register config accessor function
+				configsMap[filename] = function getConfig() {
+					var configObj = jsonfile.readFileSync(configPath);
+					return configObj;
+				};
+
+			}
+		});
+
+	server.decorate('server', 'config', configsMap);
+}
+function onRegisterConfigsError(e) {
 	if (e) {
 		throw e;
 	}

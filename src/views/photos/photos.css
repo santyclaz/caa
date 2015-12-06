@@ -1,0 +1,28 @@
+/**
+ *	Variables
+ */
+/**
+ *	Typography
+ */
+/**
+ *	Alignment
+ */
+/**
+ *	Translate
+ */
+/**
+ *	Shapes
+ */
+/**
+ *	Aspect-ratios (for container of images)
+ *
+ *	The following mixin adds attributes to achieve the following:
+ *	1) Given a width, makes target container maintain given aspect ratio
+ *	2) Crop any excessive content that exceeds aspect ratio
+ *
+ *	http://stackoverflow.com/a/25404121/1217025
+ */
+section.photos-view img.photo {
+  width: 100%; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCIuLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2NzcyIsInBob3Rvcy9waG90b3Muc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQ0ZIOztHQUVHO0FBZ0JIOztHQUVHO0FBbUJIOztHQUVHO0FBcUJIOztHQUVHO0FBWUg7Ozs7Ozs7O0dBUUc7QUNqRkgsT0FBTyxZQUFZLENBRWxCLEdBQUcsTUFBTSxDQUFDO0VBQ1QsS0FBSyxFQUFFLElBQUssR0FDWiIsImZpbGUiOiJwaG90b3MvcGhvdG9zLmNzcyIsInNvdXJjZXNDb250ZW50IjpbbnVsbCxudWxsLCJAaW1wb3J0IFwiLi4vLi4vYXNzZXRzL3N0eWxlcy92YXJpYWJsZXMuc2Nzc1wiO1xuQGltcG9ydCBcIi4uLy4uL2Fzc2V0cy9zdHlsZXMvdXRpbGl0eS5zY3NzXCI7XG5cbnNlY3Rpb24ucGhvdG9zLXZpZXcge1xuXG5cdGltZy5waG90byB7XG5cdFx0d2lkdGg6IDEwMCU7XG5cdH1cblxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */

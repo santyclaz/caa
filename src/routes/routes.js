@@ -8,6 +8,12 @@
 		'$stateProvider',
 		function routes($stateProvider) {
 
+			$stateProvider.state('photos', {
+				url: '/photos',
+				templateUrl: 'views/photos/photos.html',
+				controller: 'photos',
+			});
+
 			$stateProvider.state('story', {
 				url: '/story',
 				templateUrl: 'views/story/story.html',

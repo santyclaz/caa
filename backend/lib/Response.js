@@ -42,6 +42,7 @@ function Response(data, meta) {
 	this.success = true;
 	this.format = Response.FORMAT_JSON;
 	this.data = data;
+	this.meta = {};
 	this.errors = [];
 
 	this.setMeta(meta);
@@ -65,8 +66,9 @@ Response.prototype.setMeta = function(metaData) {
 	var meta = metaData ? metaData : {};
 	var keys = Object.keys(meta);
 
+	this.meta = {};
 	keys.forEach(function(key) {
-		this[key] = meta[key];
+		this.meta[key] = meta[key];
 	}, this);
 
 	return this;
