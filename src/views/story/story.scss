@@ -135,20 +135,46 @@ section.story-view {
 
 		.timeline {
 			#dragon-fruit {
-				@include translateX(-35px);
+				.entry-img img {
+					@include translateX(-35px);
+				}
+			}
+			#the-program {
+				margin-top: 173px;
+			}
+			#the-exchanges {
+				margin-top: 129px;
+			}
+			#the-ask {
+				margin-top: 224px;
 			}
 			#andrew-1 {
-				transform: scale(1.1);
+				margin-top: 0px;
+				.entry-img img {
+					transform: scale(1.1);
+				}
 			}
 			#us-1 {
-				@include translateX(-22px);
+				margin-top: 182px;
+				.entry-img img {
+					@include translateX(-22px);
+				}
+			}
+			#the-move {
+				margin-top: -50px;
 			}
 			#el-farallon {
-				@include translateX(-12px);
+				margin-top: 171px;
+				.entry-img img {
+					@include translateX(-12px);
+				}
 			}
 			#hitched {
-				@include translate(-100px, -73px);
-				height: initial;
+				margin-top: -157px;
+				.entry-img img {
+					@include translate(-100px, -73px);
+					height: initial;
+				}
 			}
 		}
 	}
