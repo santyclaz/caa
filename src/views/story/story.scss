@@ -5,7 +5,13 @@ section.story-view {
 	text-align: center;
 
 	.jumbo {
+		position: relative;
 		height: 400px;
+		> img {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
 	}
 
 	.content {
@@ -165,6 +171,10 @@ section.story-view {
 			}
 			#el-farallon {
 				@include translateX(-12px);
+			}
+			#hitched {
+				@include translate(-100px, -73px);
+				height: initial;
 			}
 		}
 	}
