@@ -138,7 +138,7 @@ section.story-view {
 		}
 
 		.timeline {
-			#dragon-fruit {
+			#the-start {
 				.entry-img img {
 					@include translateX(-35px);
 				}
@@ -152,13 +152,13 @@ section.story-view {
 			#the-ask {
 				margin-top: 224px;
 			}
-			#andrew-1 {
+			#his-visit {
 				margin-top: 0px;
 				.entry-img img {
-					transform: scale(1.1);
+					@include translateX(-20px);
 				}
 			}
-			#us-1 {
+			#her-visit {
 				margin-top: 182px;
 				.entry-img img {
 					@include translateX(-22px);
