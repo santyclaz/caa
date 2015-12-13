@@ -63,45 +63,19 @@ section.story-view {
 
 				background: $accent-color-2;
 
-				.heart {
+				.timeline-knob {
 					@include translateX(-50%);
 					position: absolute;
 					left: 50%;
-					bottom: 0;
-				}
+					bottom: -27px;
 
-				.heart {
-					$color: red;
-					$width: 30px;
-					$height: 40px;
-					.top-left, .top-right {
-						@include translateY(-70%);
-						border-top-left-radius: 50%;
-						border-top-right-radius: 50%;
-						background: $color;
-						width: $width;
-						height: $width;
-						top: 0;
-					}
-					.top-left {
-						position: absolute;
-						left: 0;
-						border-bottom-left-radius: 20px;
-					}
-					.top-right {
-						position: absolute;
-						right: 0;
-						border-bottom-right-radius: 20px;
-					}
-					.bottom {
-						border-top: $height solid $color;
-						border-left: $width solid transparent;
-						border-right: $width solid transparent;
-						border-top-left-radius: 2px;
-						border-top-right-radius: 2px;
+					height: 50px;
+					> img {
+						height: 100%;
 					}
 				}
 			}
+
 
 			.entry {
 				padding-top: $entry-img-radius + $entry-vertical-padding;
