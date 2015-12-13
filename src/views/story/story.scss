@@ -11,6 +11,10 @@ section.story-view {
 			position: absolute;
 			left: 0;
 			bottom: 0;
+
+			&.fill-width {
+				@include translateY(6%);
+			}
 		}
 	}
 
