@@ -175,10 +175,6 @@ section.story-view {
 			}
 			#hitched {
 				margin-top: -157px;
-				.entry-img img {
-					@include translate(-100px, -73px);
-					height: initial;
-				}
 			}
 		}
 	}
