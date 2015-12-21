@@ -2,6 +2,12 @@
 @import "../../assets/styles/utility.scss";
 
 .jumbo {
+	// fixing safari z-index issues
+	-webkit-transform:translateZ(1px);
+	-moz-transform:translateZ(1px);
+	-o-transform:translateZ(1px);
+	transform:translateZ(1px);
+
 	position: fixed;
 	top: 0;
 	min-height: 400px;
@@ -48,6 +54,7 @@
 		}
 
 		.fancy {
+
 			line-height: 0.5;
 			text-align: center;
 
@@ -78,6 +85,12 @@
 }
 
 section.story-view {
+	// fixing safari z-index issues
+	-webkit-transform:translateZ(10px);
+	-moz-transform:translateZ(10px);
+	-o-transform:translateZ(10px);
+	transform:translateZ(10px);
+
 	position: relative;
 	background: $bg-color;
 	text-align: center;
