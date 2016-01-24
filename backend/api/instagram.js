@@ -27,7 +27,7 @@ function register(server, options, next) {
 			var apiUrl = config.apiUrl + '/tags/thunderlene/media/recent';
 			var url = apiUrl;
 
-			// Handle query params
+			// Handle query params to pass along to instagram
 			var query = {};
 			query.access_token = config.accessKey;
 			query.count = 'count' in q ? q.count : 12;
@@ -35,13 +35,20 @@ function register(server, options, next) {
 				query.max_tag_id = q.minId;
 			}
 
-			var queryParams = [];
-			Object.keys(query).forEach(function (key) {
-					var param = key + '=' + query[key];
-					queryParams.push(param);
-				});
-			if (queryParams.length > 0) {
-				url += '?' + queryParams.join('&');
+			url = addQueryParams(url, query);
+
+			// Handle filtering of results
+			var filterFns = [];
+			// users expedcted to be csv string of username of user ids
+			// will only return media from given users
+			if ('users' in q) {
+				var users = q.users.trim().split(',');
+				if (users.length > 0) {
+					filterFns.push(function filterForUsers(media) {
+						var user = media.user;
+						return users.indexOf(user.username) > -1 || users.indexOf(user.id) > -1;
+					});
+				}
 			}
 
 			// Send off request to Instagram API
@@ -56,7 +63,15 @@ function register(server, options, next) {
 					response.data.forEach(function(mediaData) {
 							var media = new Media();
 							media.populate(mediaData);
-							medias.push(media);
+
+							// run through any filter rules
+							var keep = filterFns.every(function(fn) {
+								return fn(media);
+							});
+
+							if (keep) {
+								medias.push(media);
+							}
 						});
 
 					// populate pagination
@@ -72,7 +87,7 @@ function register(server, options, next) {
 					reply(endpointResponse);
 				},
 				function (error) {
-					var endpointResponse = request.error(response);
+					var endpointResponse = request.error(error);
 
 					// attempt to parse
 					try {
@@ -104,8 +119,19 @@ exports.register = register;
  *	Helper methods
  */
 
-function mapMedia() {
+function addQueryParams(string, paramsObj) {
+	var result = string;
 
+	var queryParams = [];
+	Object.keys(paramsObj).forEach(function (key) {
+			var param = key + '=' + paramsObj[key];
+			queryParams.push(param);
+		});
+	if (queryParams.length > 0) {
+		result += '?' + queryParams.join('&');
+	}
+
+	return result;
 }
 
 
@@ -116,6 +142,8 @@ function mapMedia() {
 function Media() {
 	this.type = null;
 	this.images = {};
+	this.caption = {};
+	this.user = {};
 }
 
 // populate instance given Instagram media data
@@ -126,6 +154,8 @@ Media.prototype.populate = function populate(instagramMedia) {
 	this.type = 'type' in data ? data.type : null;
 	this.setThumbnail(imgs.low_resolution);
 	this.setStandard(imgs.standard_resolution);
+	this.setUser(data.user);
+	this.setCaptionText(data.caption.text);
 };
 
 Media.prototype.setThumbnail = function setThumbnail(obj) {
@@ -133,6 +163,12 @@ Media.prototype.setThumbnail = function setThumbnail(obj) {
 };
 Media.prototype.setStandard = function setStandard(obj) {
 	this.images.standard = obj ? obj : null;
+};
+Media.prototype.setUser = function setUser(obj) {
+	this.user = obj;
+};
+Media.prototype.setCaptionText = function setCaptionText(text) {
+	this.caption.text = text;
 };
 
 
