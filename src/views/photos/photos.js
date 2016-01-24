@@ -11,15 +11,40 @@
 	];
 	function PhotosController($scope, ApiInstagram) {
 
+		/**
+		 *	Init
+		 */
+
 		$scope.photos = [];
+		getPhotos();
 
-		ApiInstagram.get().then(
-			function(httpResponse) {
-				var response = httpResponse.data;
-				var photos = response.data;
 
-				$scope.photos = photos;
-			});
+		/**
+		 *	Methods
+		 */
+
+		$scope.getPhotos = getPhotos;
+		$scope.openGallery = openGallery;
+
+
+		/**
+		 *	Method definitions
+		 */
+
+		function getPhotos() {
+			ApiInstagram.get().then(
+				function(httpResponse) {
+					var response = httpResponse.data;
+					var photos = response.data;
+
+					$scope.photos = photos;
+				});
+		}
+
+		function openGallery() {
+
+		}
+
 	}
 
 })();

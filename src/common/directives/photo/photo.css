@@ -1,0 +1,46 @@
+/**
+ *	Variables
+ */
+/**
+ *	Typography
+ */
+/**
+ *	Alignment
+ */
+/**
+ *	Translate
+ */
+/**
+ *	Shapes
+ */
+/**
+ *	Aspect-ratios (for container of images)
+ *
+ *	The following mixin adds attributes to achieve the following:
+ *	1) Given a width, makes target container maintain given aspect ratio
+ *	2) Crop any excessive content that exceeds aspect ratio
+ *
+ *	http://stackoverflow.com/a/25404121/1217025
+ */
+.photo {
+  display: inline-block;
+  position: relative; }
+  .photo.has-click-action {
+    cursor: pointer; }
+  .photo img {
+    width: 100%; }
+  .photo .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    color: #FFF; }
+    .photo .overlay:hover {
+      -webkit-transition: opacity 0.2s;
+      transition: opacity 0.2s;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 1; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2Fzc2V0cy9zdHlsZXMvdmFyaWFibGVzLnNjc3MiLCIuLi8uLi8uLi9hc3NldHMvc3R5bGVzL3V0aWxpdHkuc2NzcyIsInBob3RvL3Bob3RvLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0dBRUc7QUNGSDs7R0FFRztBQWdCSDs7R0FFRztBQW1CSDs7R0FFRztBQXFCSDs7R0FFRztBQVlIOzs7Ozs7OztHQVFHO0FDakZILE1BQU0sQ0FBQztFQUNOLE9BQU8sRUFBRSxZQUFhO0VBQ3RCLFFBQVEsRUFBRSxRQUFTLEdBRlo7RUFNTixNQUFNLGlCQUFpQixDQUFMO0lBQ2xCLE1BQU0sRUFBRSxPQUFRLEdBREc7RUFNcEIsTUFBTSxDQUFDLEdBQUcsQ0FBTjtJQUNILEtBQUssRUFBRSxJQUFLLEdBRFI7RUFJTCxNQUFNLENBQUMsUUFBUSxDQUFOO0lBQ1IsUUFBUSxFQUFFLFFBQVM7SUFDbkIsR0FBRyxFQUFFLENBQUU7SUFDUCxNQUFNLEVBQUUsQ0FBRTtJQUNWLElBQUksRUFBRSxDQUFFO0lBQ1IsS0FBSyxFQUFFLENBQUU7SUFHVCxPQUFPLEVBQUUsQ0FBRTtJQUNYLEtBQUssRUFBRSxJQUFLLEdBVEg7SUFXUixNQUFNLENBQUMsUUFBUSxNQUFNLENBQWQ7TUFFUCxrQkFBa0IsRUFBRSxPQUFPLENBRGhCLElBQUk7TUFFZixVQUFVLEVBQUUsT0FBTyxDQUZSLElBQUk7TUFHZixnQkFBZ0IsRUFBRSxrQkFBSTtNQUN0QixPQUFPLEVBQUUsQ0FBRSxHQUxIIiwiZmlsZSI6InBob3RvL3Bob3RvLmNzcyIsInNvdXJjZXNDb250ZW50IjpbbnVsbCxudWxsLCJAaW1wb3J0IFwidmFyaWFibGVzLnNjc3NcIjtcclxuQGltcG9ydCBcInV0aWxpdHkuc2Nzc1wiO1xyXG5cclxuLnBob3RvIHtcclxuXHRkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cclxuXHQvLyBzZWxmXHJcblxyXG5cdCYuaGFzLWNsaWNrLWFjdGlvbiB7XHJcblx0XHRjdXJzb3I6IHBvaW50ZXI7XHJcblx0fVxyXG5cclxuXHQvLyBjaGlsZHJlblxyXG5cclxuXHRpbWcge1xyXG5cdFx0d2lkdGg6IDEwMCU7XHJcblx0fVxyXG5cclxuXHQub3ZlcmxheSB7XHJcblx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0XHR0b3A6IDA7XHJcblx0XHRib3R0b206IDA7XHJcblx0XHRsZWZ0OiAwO1xyXG5cdFx0cmlnaHQ6IDA7XHJcblxyXG5cdFx0Ly8gc3RhcnQgb2ZmIGludmlzaWJsZVxyXG5cdFx0b3BhY2l0eTogMDtcclxuXHRcdGNvbG9yOiAjRkZGO1xyXG5cclxuXHRcdCY6aG92ZXIge1xyXG5cdFx0XHQkZHVyYXRpb246IDAuMnM7XHJcblx0XHRcdC13ZWJraXQtdHJhbnNpdGlvbjogb3BhY2l0eSAkZHVyYXRpb247XHJcblx0XHRcdHRyYW5zaXRpb246IG9wYWNpdHkgJGR1cmF0aW9uO1xyXG5cdFx0XHRiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLDAuNSk7XHJcblx0XHRcdG9wYWNpdHk6IDE7XHJcblx0XHR9XHJcblx0fVxyXG59XHJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */
