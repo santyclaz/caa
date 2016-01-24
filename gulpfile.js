@@ -29,9 +29,14 @@ var ENV = {
 		rootDir: 'backend'
 	},
 	client: {
-		path: 'src'
+		rootDir: 'src'
 	}
 };
+
+ENV.client.assetsDir = ENV.client.rootDir + '/assets';
+ENV.client.stylesDir = ENV.client.assetsDir + '/styles';
+ENV.client.commonDir = ENV.client.rootDir + '/common';
+ENV.client.viewsDir = ENV.client.rootDir + '/views';
 
 
 /**
@@ -104,19 +109,24 @@ function compileSass(startWatch) {
 		))
 		// run Sass + sourcemaps
 		.pipe(sourcemaps.init())
-		.pipe(sass())
+		.pipe(sass(config.sassOpts))
 		.pipe(sourcemaps.write())
 		// write the resulting CSS to dest
 		.pipe(gulp.dest(config.dest));
 }
 compileSass.config = {
 	src: [
-		ENV.client.path + '/assets/styles/*.scss',
-		ENV.client.path + '/common/directives/**/*.scss',
-		ENV.client.path + '/views/**/*.scss',
+		ENV.client.stylesDir + '/*.scss',
+		ENV.client.commonDir + '/directives/**/*.scss',
+		ENV.client.viewsDir + '/**/*.scss',
 	],
 	dest: function(file) {
 		// write resulting CSS to same directory
 		return file.base;
-	}
+	},
+	sassOpts: {
+		includePaths: [
+			ENV.client.assetsDir,
+		]
+	},
 };
