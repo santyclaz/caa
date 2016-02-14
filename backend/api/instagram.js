@@ -122,13 +122,29 @@ exports.register = register;
 function addQueryParams(string, paramsObj) {
 	var result = string;
 
-	var queryParams = [];
+	var queryParams = [], queryStr;
 	Object.keys(paramsObj).forEach(function (key) {
 			var param = key + '=' + paramsObj[key];
 			queryParams.push(param);
 		});
+
 	if (queryParams.length > 0) {
-		result += '?' + queryParams.join('&');
+		queryStr = queryParams.join('&');
+
+		var qIndex = string.indexOf('?');
+
+		// if string contains ?
+		if (qIndex > -1) {
+			// if ? isn't at very end of string
+			if (qIndex !== string.length - 1) {
+				result += '&';
+			}
+			result += queryStr;
+		}
+		// if string doesn't have ?
+		else {
+			result += '?' + queryStr;
+		}
 	}
 
 	return result;
