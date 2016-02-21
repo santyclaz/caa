@@ -19,13 +19,13 @@ module.directive('photo', function() {
 			overlay: '=overlay',
 		},
 		templateUrl: templateUrl,
-		controller: PhotoController,
+		controller: PhotoCtrl,
 	};
 });
 
 
-PhotoController.$inject = ['$scope', '$element', '$attrs', '$transclude'];
-function PhotoController($scope, $element, $attrs, $transclude) {
+PhotoCtrl.$inject = ['$scope', '$element', '$attrs', '$transclude'];
+function PhotoCtrl($scope, $element, $attrs, $transclude) {
 	$element.addClass('photo');
 
 	$attrs.$observe('ngClick', function(val) {
