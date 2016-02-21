@@ -11,24 +11,24 @@
 		</p>
 
 		<section class="sub-section category venue row">
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-4 col-md-3">
 				<div class="category-img">
 					<img ng-src="{{categories.venue.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width category-content">
+			<div class="col-sm-8 col-md-9 category-content">
 				<h2>{{categories.venue.name}}</h2>
 				<div ng-repeat="place in categories.venue.places" place ng-model="place"></div>
 			</div>
 		</section>
 
 		<section class="sub-section category schedule row">
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-4 col-md-3">
 				<div class="category-img">
 					<img ng-src="{{categories.schedule.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width category-content">
+			<div class="col-sm-8 col-md-9 category-content">
 				<h2>{{categories.schedule.name}}</h2>
 				<dl class="dl-horizontal dt-text-left">
 					<dt>4:00 PM</dt>
@@ -44,12 +44,12 @@
 		</section>
 
 		<section class="sub-section category attire row">
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-4 col-md-3">
 				<div class="category-img">
 					<img ng-src="{{categories.attire.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width category-content">
+			<div class="col-sm-8 col-md-9 category-content">
 				<h2>{{categories.attire.name}}</h2>
 				<h3>Summer Cocktail</h3>
 				<p>
@@ -62,12 +62,12 @@
 		</section>
 
 		<section class="sub-section category hotels row">
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-4 col-md-3">
 				<div class="category-img">
 					<img ng-src="{{categories.hotels.img}}" />
 				</div>
 			</div>
-			<div class="col-sm-6 content-width">
+			<div class="col-sm-8 col-md-9">
 				<h2>{{categories.hotels.name}}</h2>
 				<div ng-repeat="place in categories.hotels.places" place ng-model="place"></div>
 			</div>
