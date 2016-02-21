@@ -24,7 +24,7 @@
 							state: 'CA',
 							postalCode: '93012',
 						},
-						mapLink: 'https://www.google.com/maps/place/Gerry+Ranch/@34.2421004,-118.9479015,17z/data=!3m1!4b1!4m2!3m1!1s0x80e8314949bb9183:0xd6cb1cd1d06ec367'
+						mapLink: 'https://goo.gl/maps/4BsjP17uwTB2',
 					}
 				]
 			},

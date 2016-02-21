@@ -19,6 +19,10 @@ nav.navbar {
 
 		color: $accent-color-3;
 		text-decoration: none;
+
+		small.ampersand {
+			font-size: 50%;
+		}
 	}
 
 	ul.navbar-nav {

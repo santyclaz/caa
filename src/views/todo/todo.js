@@ -39,8 +39,8 @@
 					{
 						name: 'Institution Ale Company',
 						address: {
-							address1: '438 Calle San Pablo',
-							address2: 'Unit I',
+							address1: '438 Calle San Pablo, Unit I',
+							address2: '',
 							city: 'Camarillo',
 							state: 'CA',
 							postalCode: '93012'
