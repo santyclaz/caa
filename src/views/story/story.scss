@@ -8,10 +8,6 @@ section.story-view {
 		position: relative;
 		height: 400px;
 		> img {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-
 			&.fill-width {
 				@include translateY(6%);
 			}
