@@ -13,6 +13,7 @@
 		// common
 		'caa.common.api.Instagram',
 		'caa.common.directives.address',
+		'caa.common.directives.countdown-to',
 		'caa.common.directives.photo',
 		'caa.common.directives.place',
 		// lib

@@ -5,6 +5,15 @@ section.wedding-view {
 
 	.jumbo {
 		height: 400px;
+		text-align: center;
+
+		.countdown-to {
+			@include verticalAlign();
+
+			font-size: 32px;
+			font-weight: bold;
+			color: #FFF;
+		}
 	}
 
 	.content {
