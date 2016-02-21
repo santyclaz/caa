@@ -6,8 +6,11 @@ section.wedding-view {
 	.jumbo {
 		height: 400px;
 
-		img.fill-width.desktop-view {
+		img.fill-width.visible-md {
 			top: 155px;
+		}
+		img.fill-width.visible-lg {
+			top: 137px;
 		}
 	}
 
