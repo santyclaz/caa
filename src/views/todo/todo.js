@@ -100,7 +100,7 @@
 							url: 'http://www.underwoodfamilyfarms.com/somis.html',
 							label: 'www.underwoodfamilyfarms.com/somis.html',
 						},
-						description: 'Pick berries and feed farm animals.',
+						description: 'Pick an assortment of berries and feed farm animals.',
 					},
 					{
 						name: 'McGrath Family Farm',
@@ -115,7 +115,7 @@
 							url: 'http://www.mcgrathfamilyfarm.com',
 							label: 'www.mcgrathfamilyfarm.com',
 						},
-						description: 'Pick your own strawberries.',
+						description: 'Grab a basket and pick your own fresh strawberries.',
 					},
 				]
 			},
