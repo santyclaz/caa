@@ -8,6 +8,7 @@
 		'caa.views.photos',
 		'caa.views.rsvp',
 		'caa.views.story',
+		'caa.views.todo',
 		'caa.views.wedding',
 		// common
 		'caa.common.api.Instagram',

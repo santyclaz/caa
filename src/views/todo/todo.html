@@ -1,0 +1,64 @@
+<section class="wedding-view">
+
+	<div class="jumbo" scale-to-fit-container>
+		<img src="assets/imgs/example-lg.jpg" scale-to-fit="'1125:750'" />
+	</div>
+
+	<div class="content">
+
+		<p class="section-description">
+			Before and after wedding, take the time to visit some great spots in the Los Angeles area. It's full of history, beauty, and good food.
+		</p>
+
+		<section class="sub-section category shopping row">
+			<div class="col-sm-4 col-md-3">
+				<div class="category-img">
+					<img ng-src="{{categories.shopping.img}}" />
+				</div>
+			</div>
+			<div class="col-sm-8 col-md-9">
+				<h2>{{categories.shopping.name}}</h2>
+				<div ng-repeat="place in categories.shopping.places" place ng-model="place"></div>
+			</div>
+		</section>
+
+		<section class="sub-section category tasting row">
+			<div class="col-sm-4 col-md-3">
+				<div class="category-img">
+					<img ng-src="{{categories.tasting.img}}" />
+				</div>
+			</div>
+			<div class="col-sm-8 col-md-9">
+				<h2>{{categories.tasting.name}}</h2>
+				<div ng-repeat="place in categories.tasting.places" place ng-model="place"></div>
+			</div>
+		</section>
+
+		<section class="sub-section category fruit-picking row">
+			<div class="col-sm-4 col-md-3">
+				<div class="category-img">
+					<img ng-src="{{categories.fruitPicking.img}}" />
+				</div>
+			</div>
+			<div class="col-sm-8 col-md-9">
+				<h2>{{categories.fruitPicking.name}}</h2>
+				<div ng-repeat="place in categories.fruitPicking.places" place ng-model="place"></div>
+			</div>
+		</section>
+
+		<section class="sub-section category museum row">
+			<div class="col-sm-4 col-md-3">
+				<div class="category-img">
+					<img ng-src="{{categories.museum.img}}" />
+				</div>
+			</div>
+			<div class="col-sm-8 col-md-9">
+				<h2>{{categories.museum.name}}</h2>
+				<div ng-repeat="place in categories.museum.places" place ng-model="place"></div>
+			</div>
+		</section>
+
+	</div>
+
+
+</section>

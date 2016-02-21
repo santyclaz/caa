@@ -31,6 +31,12 @@
 				templateUrl: 'views/rsvp/rsvp.html',
 				controller: 'rsvp',
 			});
+
+			$stateProvider.state('todo', {
+				url: '/todo',
+				templateUrl: 'views/todo/todo.html',
+				controller: 'todo',
+			});
 		}
 	]);
 

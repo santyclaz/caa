@@ -1,0 +1,37 @@
+@import "variables.scss";
+@import "utility.scss";
+
+section.wedding-view {
+
+	.jumbo {
+		height: 400px;
+	}
+
+	.content {
+		position: relative;
+
+		.category.shopping {
+			.category-img img {
+				@include translateX(-98px);
+			}
+		}
+
+		.category.tasting {
+			.category-img img {
+				@include translateX(-59px);
+			}
+		}
+
+		.category.fruit-picking {
+			.category-img img {
+				@include translateX(-88px);
+			}
+		}
+
+		.category.museum {
+			.category-img img {
+				@include translateX(-20px);
+			}
+		}
+	}
+}
