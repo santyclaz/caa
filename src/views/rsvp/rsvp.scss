@@ -1,0 +1,10 @@
+@import "variables.scss";
+@import "utility.scss";
+
+section.rsvp-view {
+	background: url('/assets/imgs/rsvp-pattern.png');
+	background-size: 1000px 1250px;
+	background-repeat: repeat;
+
+	text-align: center;
+}
