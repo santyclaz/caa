@@ -6,3 +6,5 @@ tests
 backend/config/*
 !backend/config/*.template
 .DS_Store
+
+src/lib/Bombshell

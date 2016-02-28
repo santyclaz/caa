@@ -7,12 +7,32 @@ section.wedding-view {
 		height: 400px;
 		text-align: center;
 
-		.countdown-to {
-			@include verticalAlign();
-
-			font-size: 32px;
+		.countdown-to.blocks {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			padding-top: 10px;
 			font-weight: bold;
 			color: #FFF;
+
+			.countdown-part {
+				display: inline-block;
+				background: rgba(0,0,0,0.3);
+				width: 130px;
+				padding: 25px;
+				margin: 10px 5px 0;
+
+				.value {
+					@include bombshell;
+					font-size: 2.125em;
+					display: block;
+				}
+				.unit {
+					display: block;
+					font-size: 1.125em;
+					text-transform: uppercase;
+				}
+			}
 		}
 	}
 

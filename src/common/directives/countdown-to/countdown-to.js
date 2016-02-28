@@ -23,46 +23,65 @@ module.directive('countdownTo', function() {
 });
 
 
+// returning false will remove the element from the DOM
 var defaultFormats = {
-	years: function(years, timeLeftObj) {
-		var result = '';
-		if (typeof years === 'number' && years !== 0) {
-			result = years + ' years';
+	years: function(value, timeLeftObj) {
+		var result = false;
+		if (typeof value === 'number' && value !== 0) {
+			result = {
+				value: value,
+				unit: 'years',
+			};
 		}
 		return result;
 	},
-	months: function(months, timeLeftObj) {
-		var result = '';
-		if (typeof months === 'number' && months !== 0) {
-			result = months + ' months';
+	months: function(value, timeLeftObj) {
+		var result = false;
+		if (typeof value === 'number' && value !== 0) {
+			result = {
+				value: value,
+				unit: 'months',
+			};
 		}
 		return result;
 	},
-	days: function(days, timeLeftObj) {
-		var result = '';
-		if (typeof days === 'number' && days !== 0) {
-			result = days + ' days';
+	days: function(value, timeLeftObj) {
+		var result = false;
+		if (typeof value === 'number' && value !== 0) {
+			result = {
+				value: value,
+				unit: 'days',
+			};
 		}
 		return result;
 	},
-	hours: function(hours, timeLeftObj) {
-		var result = '';
-		if (typeof hours === 'number') {
-			result = hours + ' hours';
+	hours: function(value, timeLeftObj) {
+		var result = false;
+		if (typeof value === 'number') {
+			result = {
+				value: value,
+				unit: 'hours',
+			};
 		}
 		return result;
 	},
-	minutes: function(minutes, timeLeftObj) {
-		var result = '';
-		if (typeof minutes === 'number') {
-			result = minutes + ' minutes';
+	minutes: function(value, timeLeftObj) {
+		var result = false;
+		if (typeof value === 'number') {
+			result = {
+				value: value,
+				unit: 'minutes',
+			};
 		}
 		return result;
 	},
-	seconds: function(seconds, timeLeftObj) {
-		var result = '';
-		if (typeof seconds === 'number') {
-			result = seconds + ' seconds';
+	seconds: function(value, timeLeftObj) {
+		var result = false;
+		if (typeof value === 'number') {
+			result = {
+				value: value,
+				unit: 'seconds',
+			};
 		}
 		return result;
 	},
@@ -95,14 +114,14 @@ function CountdownToCtrl($scope, $element, $attrs, $transclude, $interval) {
 	 * methods
 	 */
 
-	$scope.getTimeLeftStr = getTimeLeftStr;
+	$scope.getTimeLeft = getTimeLeft;
 
 
 	/**
 	 * method definitions
 	 */
 
-	function getTimeLeftStr(unit) {
+	function getTimeLeft(unit) {
 		var result = '';
 		if (unit in $scope.formatFns) {
 			var timeLeft = $scope.timeLeft;
@@ -160,7 +179,8 @@ function CountdownToCtrl($scope, $element, $attrs, $transclude, $interval) {
 	}
 
 	function onFormatChange(newVal) {
-		$scope.formatFns = defaultFormats;
+		var formatFns = angular.extend({}, defaultFormats, newVal);
+		$scope.formatFns = formatFns;
 	}
 }
 
