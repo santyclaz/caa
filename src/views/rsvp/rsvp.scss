@@ -30,18 +30,23 @@ section.rsvp-view {
 		}
 
 
-		.input-madlib {
+		.madlib-input-style {
 			border: none;
 			border-bottom: 2px solid;
 			border-radius: 0;
 			box-shadow: none;
 			color: $accent-color-1;
 		}
-		.btn.btn-madlib {
-			@extend .input-madlib;
-
-			.caret {
-				margin-left: 3px;
+		.madlib-text-input {
+			@extend .madlib-input-style;
+			min-width: 126px;
+		}
+		.madlib-select-input.dropdown {
+			.dropdown-toggle {
+				@extend .madlib-input-style;
+				.caret {
+					margin-left: 3px;
+				}
 			}
 		}
 	}

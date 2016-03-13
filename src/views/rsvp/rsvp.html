@@ -8,9 +8,9 @@
 			Dear Charlene and Andrew,
 		</div>
 		<div class="paragraph">
-			I, <span ng-model="blah" class="form-control inline input-madlib" placeholder="Your Full Name" contenteditable="true"></span> will
-			<span uib-dropdown>
-				<span uib-dropdown-toggle class="btn btn-madlib">
+			I, <span ng-model="blah" class="form-control inline madlib-text-input" placeholder="Your Full Name" contenteditable="true"></span> will
+			<span uib-dropdown class="madlib-select-input">
+				<span uib-dropdown-toggle class="btn">
 					{{form.attending.value === null ? 'Select One' : form.attending.value}} <span class="caret"></span>
 				</span>
 				<ul uib-dropdown-menu>
