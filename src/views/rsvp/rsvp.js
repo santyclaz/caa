@@ -13,8 +13,8 @@
 			attending: {
 				value: null,
 				options: [
-					'certainly',
-					'not be',
+					'certainly be',
+					'sadly not be',
 				]
 			},
 		};

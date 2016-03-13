@@ -6,7 +6,8 @@
     "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
-    "tdn.scale-to-fit": "~1.0.0"
+    "tdn.scale-to-fit": "~1.0.0",
+    "angular-sanitize": "^1.5.0"
   },
   "private": true
 }

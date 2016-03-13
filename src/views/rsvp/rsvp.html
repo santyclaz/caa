@@ -8,8 +8,8 @@
 			Dear Charlene and Andrew,
 		</div>
 		<div class="paragraph">
-			On August 6th, 2016, I will
-			<div uib-dropdown class="btn-group inline">
+			I, <span ng-model="blah" class="form-control inline input-madlib" placeholder="Your Full Name" contenteditable="true"></span> will
+			<span uib-dropdown>
 				<span uib-dropdown-toggle class="btn btn-madlib">
 					{{form.attending.value === null ? 'Select One' : form.attending.value}} <span class="caret"></span>
 				</span>
@@ -20,8 +20,8 @@
 						</a>
 					</li>
 				</ul>
-			</div>
-    		attend your spectacular wedding.
+			</span>
+    		attending your wedding on August 6th, 2016.
 		</div>
 		<div class="paragraph">
 			When the party starts popping, I can't wait to see Charlene and Andrew do the chicken dance.

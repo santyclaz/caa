@@ -30,11 +30,15 @@ section.rsvp-view {
 		}
 
 
-		.btn.btn-madlib {
+		.input-madlib {
+			border: none;
 			border-bottom: 2px solid;
 			border-radius: 0;
 			box-shadow: none;
 			color: $accent-color-1;
+		}
+		.btn.btn-madlib {
+			@extend .input-madlib;
 
 			.caret {
 				margin-left: 3px;
