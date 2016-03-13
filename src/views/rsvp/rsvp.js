@@ -9,7 +9,15 @@
 		'$scope',
 	];
 	function RsvpController($scope) {
-
+		$scope.form = {
+			attending: {
+				value: null,
+				options: [
+					'certainly',
+					'not be',
+				]
+			},
+		};
 	}
 
 })();

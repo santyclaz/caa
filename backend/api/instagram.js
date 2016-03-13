@@ -39,7 +39,7 @@ function register(server, options, next) {
 
 			// Handle filtering of results
 			var filterFns = [];
-			// users expedcted to be csv string of username of user ids
+			// users expected to be csv string of username of user ids
 			// will only return media from given users
 			if ('users' in q) {
 				var users = q.users.trim().split(',');

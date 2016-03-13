@@ -2,7 +2,11 @@
  *	Typography
  */
 
-@mixin bombshell {
+@mixin font-default {
+	font-family: 'Raleway', serif;
+}
+
+@mixin font-bombshell {
 	font-family: 'BombshellPro';
 	font-weight: normal;
 	-webkit-font-smoothing:antialiased;

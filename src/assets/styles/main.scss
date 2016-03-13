@@ -7,7 +7,7 @@
  */
 
 body {
-	font-family: 'Raleway', serif;
+	@include font-default;
 }
 
 footer {
@@ -31,7 +31,7 @@ section.sub-section {
  */
 
 h1, h2 {
-	@include bombshell;
+	@include font-bombshell;
 	color: $accent-color-3;
 }
 
@@ -49,8 +49,11 @@ h3 {
 	text-transform: uppercase;
 }
 
+.font-default {
+	@include font-default;
+}
 .font-bombshell {
-	@include bombshell;
+	@include font-bombshell;
 }
 
 
@@ -87,4 +90,13 @@ dl.dt-text-left {
 .no-gutter {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+
+/**
+ * Buttons
+ */
+
+.dropdown.inline {
+	display: inline-block;
 }

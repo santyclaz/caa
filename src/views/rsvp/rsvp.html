@@ -1,4 +1,35 @@
 <h1 class="text-center">You In or What?</h1>
 
 <section class="rsvp-view">
+
+	<div class="rsvp-content-box">
+		<h2>RSVP</h2>
+		<div class="paragraph">
+			Dear Charlene and Andrew,
+		</div>
+		<div class="paragraph">
+			On August 6th, 2016, I will
+			<div uib-dropdown class="btn-group inline">
+				<span uib-dropdown-toggle class="btn btn-madlib">
+					{{form.attending.value === null ? 'Select One' : form.attending.value}} <span class="caret"></span>
+				</span>
+				<ul uib-dropdown-menu>
+					<li ng-repeat="option in form.attending.options">
+						<a href="#" ng-click="form.attending.value = option">
+							{{option}}
+						</a>
+					</li>
+				</ul>
+			</div>
+    		attend your spectacular wedding.
+		</div>
+		<div class="paragraph">
+			When the party starts popping, I can't wait to see Charlene and Andrew do the chicken dance.
+		</div>
+
+		<div class="action-pane">
+			<button class="submit">Deliver</button>
+		</div>
+	</div>
+
 </section>
