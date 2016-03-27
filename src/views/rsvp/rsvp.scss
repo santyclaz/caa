@@ -40,6 +40,7 @@ section.rsvp-view {
 		.madlib-text-input {
 			@extend .madlib-input-style;
 			min-width: 126px;
+			text-align: center;
 		}
 		.madlib-select-input.dropdown {
 			.dropdown-toggle {
@@ -48,6 +49,9 @@ section.rsvp-view {
 					margin-left: 3px;
 				}
 			}
+		}
+		.madlib-textarea {
+			color: $accent-color-1;
 		}
 	}
 }
