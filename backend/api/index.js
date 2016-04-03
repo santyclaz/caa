@@ -34,7 +34,7 @@ function register(server, options, next) {
 	});
 
 	server.route({
-		method: 'GET',
+		method: ['GET', 'POST', 'PUT', 'DELETE'],
 		path: '/{catchall*}',
 		handler: function (request, reply) {
 			var relativePath = prefix ? request.path.substring(prefix.length) : request.path;
