@@ -12,11 +12,13 @@
 		'caa.views.wedding',
 		// common
 		'caa.common.api.Instagram',
+		'caa.common.api.RSVP',
 		'caa.common.directives.address',
 		'caa.common.directives.contenteditable',
 		'caa.common.directives.countdown-to',
 		'caa.common.directives.photo',
 		'caa.common.directives.place',
+		'caa.common.services.URL',
 		// lib
 		'ui.router',
 		'ui.bootstrap',
