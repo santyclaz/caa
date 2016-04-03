@@ -7,8 +7,9 @@
 
 	RsvpController.$inject = [
 		'$scope',
+		'api.RSVP',
 	];
-	function RsvpController($scope) {
+	function RsvpController($scope, ApiRSVP) {
 
 		var form = {
 			name: {
@@ -44,6 +45,10 @@
 					{
 						value: 4,
 						label: '3 additional guests',
+					},
+					{
+						value: 5,
+						label: '4 additional guests',
 					},
 				],
 				select: function(option) {
@@ -81,7 +86,42 @@
 
 		$scope.form = form;
 
+		$scope.rsvpSent = false;
 
+
+		/**
+		 *	Methods
+		 */
+
+		$scope.submit = submit;
+
+
+		/**
+		 *	Method definitions
+		 */
+
+		function submit(form) {
+			if (form.$valid) {
+				var formVals = getFormValues();
+				ApiRSVP.save(formVals)
+					.then(function(httpResponse) {
+						var response = httpResponse.data;
+						$scope.rsvpSent = true;
+					})
+					.finally(function() {
+						$scope.rsvpSent = true;
+					});
+			}
+		}
+
+		function getFormValues() {
+			var formValues = {};
+			Object.keys(form).forEach(function(key) {
+				var formFieldObj = form[key];
+				formValues[key] = formFieldObj.value;
+			});
+			return formValues;
+		}
 	}
 
 })();

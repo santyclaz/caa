@@ -12,6 +12,7 @@ section.rsvp-view {
 		margin: 50px auto;
 		padding: 0 20px;
 		width: 80%;
+		min-height: 200px;
 		overflow: auto;
 
 		h2 {
@@ -20,13 +21,31 @@ section.rsvp-view {
 			text-align: center;
 		}
 
+		.rsvp-content {
+			margin-bottom: 30px;
+		}
+
 		.paragraph {
 			margin-bottom: 15px;
 		}
 
 		.action-pane {
 			text-align: center;
-			margin: 30px 0;
+			margin: 30px 0 0;
+
+			.submit {
+				@include font-bombshell;
+				background-color: $accent-color-3;
+				color: #FFFFFF;
+				font-size: 20px;
+				padding-top: 18px;
+				border: none;
+				border-radius: 0;
+
+				&:hover {
+					background-color: lighten($accent-color-3, 5%);
+				}
+			}
 		}
 
 
@@ -36,9 +55,16 @@ section.rsvp-view {
 			border-radius: 0;
 			box-shadow: none;
 			color: $accent-color-1;
+			padding-top: 1px;
+			padding-bottom: 1px;
+
+			&:hover:not(:focus):not(:active) {
+				color: lighten($accent-color-1, 15%);
+			}
 		}
 		.madlib-text-input {
 			@extend .madlib-input-style;
+			display: inline;
 			min-width: 126px;
 			text-align: center;
 		}
@@ -52,6 +78,14 @@ section.rsvp-view {
 		}
 		.madlib-textarea {
 			color: $accent-color-1;
+			border-color: $accent-color-1;
+			box-shadow: none;
+		}
+
+
+		// custom input styling
+		.madlib-text-input.form-input-action {
+			min-width: 278px;
 		}
 	}
 }
