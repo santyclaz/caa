@@ -18,7 +18,7 @@
 		'caa.common.directives.countdown-to',
 		'caa.common.directives.photo',
 		'caa.common.directives.place',
-		'caa.common.services.URL',
+		'caa.common.services.URI',
 		// lib
 		'ui.router',
 		'ui.bootstrap',
