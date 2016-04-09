@@ -12,9 +12,9 @@
 
 	definition.$inject = [
 		'$http',
-		'services.URL',
+		'services.URI',
 	];
-	function definition($http, URL) {
+	function definition($http, URI) {
 
 		/**
 		 *	API
@@ -32,7 +32,7 @@
 		function get(params) {
 			var url = 'api/instagram';
 			var queryParams = angular.extend({}, params);
-			url = URL.addQueryParams(url, queryParams);
+			url = URI.addQueryParams(url, queryParams);
 
 			return $http.get(url);
 		}
