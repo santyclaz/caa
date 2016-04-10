@@ -21,6 +21,9 @@
 					'certainly',
 					'sadly not',
 				],
+				select: function(option) {
+					form.attending.value = option;
+				},
 				isTrue: function() {
 					var attending = form.attending.value === 'certainly';
 					return attending;
@@ -101,7 +104,8 @@
 		 */
 
 		function submit(form) {
-			if (form.$valid) {
+			var attendingFilled = $scope.form.attending.value !== null; // TODO: integrate with ngModel
+			if (form.$valid && attendingFilled) {
 				var formVals = getFormValues();
 				ApiRSVP.save(formVals)
 					.then(function(httpResponse) {

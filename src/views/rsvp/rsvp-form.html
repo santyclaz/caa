@@ -11,7 +11,7 @@
 			</span>
 			<ul uib-dropdown-menu>
 				<li ng-repeat="option in form.attending.options">
-					<a href="#" ng-click="form.attending.value = option">
+					<a href="#" ng-click="form.attending.select(option)">
 						{{option}}
 					</a>
 				</li>
@@ -48,7 +48,7 @@
 		</div>
 		<div class="paragraph">
 			Additional comments
-			<textarea class="form-control madlib-textarea" ng-model="form.comments.value"></textarea>
+			<textarea class="form-control madlib-textarea" ng-model="form.comments.value" placeholder="e.g. dietary restrictions"></textarea>
 		</div>
 		<div class="paragraph">
 			See you there!
