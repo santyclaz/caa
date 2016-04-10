@@ -89,6 +89,7 @@
 
 		$scope.form = form;
 
+		$scope.saving = false;
 		$scope.rsvpSent = false;
 
 
@@ -105,7 +106,9 @@
 
 		function submit(form) {
 			var attendingFilled = $scope.form.attending.value !== null; // TODO: integrate with ngModel
-			if (form.$valid && attendingFilled) {
+			if (!$scope.saving && form.$valid && attendingFilled) {
+				$scope.saving = true;
+
 				var formVals = getFormValues();
 				ApiRSVP.save(formVals)
 					.then(function(httpResponse) {
@@ -113,6 +116,7 @@
 						$scope.rsvpSent = true;
 					})
 					.finally(function() {
+						$scope.saving = false;
 						$scope.rsvpSent = true;
 					});
 			}
