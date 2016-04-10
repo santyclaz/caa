@@ -21,15 +21,17 @@ function register(server, options, next) {
 		method: 'POST',
 		path: '/rsvp',
 		handler: function (request, reply) {
-			var config = server.config.instagram();
+			var config = server.config['google-form']();
 			var q = request.parma;
 			var payload = request.payload;
-			transformFormParams(payload);
-			var googleFormObj = toGoogleFormKeys(payload);
+			transformFormParams(payload); // transform before turning into googleFormObj
+
+			var formUrl = config.formUrl;
+			var googleFormObj = toGoogleFormKeys(payload, config.formKeyMappings);
 
 			var options = {
 				method: 'POST',
-				uri: 'https://docs.google.com/forms/d/10KRGpXZ6p-VBgojWCUfsmL3OngYRkIIGGxtqWO1oqnQ/formResponse',
+				uri: formUrl,
 				form: googleFormObj,
 			};
 
@@ -57,12 +59,12 @@ exports.register = register;
  *	Helper methods
  */
 
-function toGoogleFormKeys(params) {
+function toGoogleFormKeys(params, googleFormKeyMap) {
 	var result = {};
 
 	var keys = Object.keys(params), gkey;
 	keys.forEach(function(key, i) {
-		gkey = mapToGoogleFormKey(key);
+		gkey = key in googleFormKeyMap ? googleFormKeyMap[key] : null;
 		if (gkey) {
 			result[gkey] = params[key];
 		}
@@ -82,24 +84,3 @@ function transformFormParams(params) {
 		delete params.guests;
 	}
 }
-
-function mapToGoogleFormKey(key) {
-	var gkey = null;
-	var map = {
-		'name': 'entry.1821408553',
-		'attending': 'entry.1305943091',
-		'inviteCount': 'entry.1987180806',
-		'guest1': 'entry.1977986019',
-		'guest2': 'entry.711950605',
-		'guest3': 'entry.1393261919',
-		'guest4': 'entry.288200054',
-		'action': 'entry.2031775266',
-		'song': 'entry.1586272080',
-		'comments': 'entry.1400487606',
-	};
-	if (key in map) {
-		gkey = map[key];
-	}
-	return gkey;
-}
-
