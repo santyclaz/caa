@@ -94,7 +94,8 @@ function mapToGoogleFormKey(key) {
 		'guest3': 'entry.1393261919',
 		'guest4': 'entry.288200054',
 		'action': 'entry.2031775266',
-		'comments': 'entry.1586272080',
+		'song': 'entry.1586272080',
+		'comments': 'entry.1400487606',
 	};
 	if (key in map) {
 		gkey = map[key];
