@@ -1,0 +1,36 @@
+@import "variables.scss";
+@import "utility.scss";
+
+section.registry-view {
+
+	.jumbo {
+		img.fill-width.visible-md {
+			top: 137px;
+		}
+		img.fill-width.visible-lg {
+			top: 80px;
+		}
+	}
+
+	h1 {
+		margin-top: 40px;
+	}
+
+	.registry-content-box {
+		margin-top: 30px;
+	}
+
+	table.registry-list {
+		width: 100%;
+		margin-top: 20px;
+		text-align: center;
+
+		tr.visible-xs td {
+			padding-top: 20px;
+		}
+	}
+
+	.registry-link {
+		width: 280px;
+	}
+}

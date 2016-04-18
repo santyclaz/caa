@@ -32,6 +32,11 @@
 				controller: 'rsvp',
 			});
 
+			$stateProvider.state('registry', {
+				url: '/registry',
+				templateUrl: 'views/registry/registry.html',
+			});
+
 			$stateProvider.state('todo', {
 				url: '/todo',
 				templateUrl: 'views/todo/todo.html',
