@@ -26,14 +26,21 @@ nav.navbar {
 	}
 
 	ul.navbar-nav {
-		li > a {
-			line-height: $item-line-height;
-			padding: $item-padding;
+		li {
+			> a {
+				line-height: $item-line-height;
+				padding: $item-padding;
 
-			color: $accent-color-1;
-			text-transform: uppercase;
+				color: $accent-color-1;
+				text-transform: uppercase;
 
-			&:hover, &:active, &:focus {
+				&:hover, &:active, &:focus {
+					background: transparent;
+					color: $default-text-color;
+				}
+			}
+
+			&.active > a {
 				background: transparent;
 				color: $default-text-color;
 			}
