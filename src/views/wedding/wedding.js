@@ -61,26 +61,47 @@
 						}
 					},
 					{
-						name: 'Hampton Inn & Suites',
+						name: 'Best Western Plus',
 						address: {
-							address1: '30255 Agoura Road',
+							address1: '75 W Thousand Oaks Boulevard',
 							address2: '',
-							city: 'Agoura Hills',
+							city: 'Thousand Oaks',
 							state: 'CA',
-							postalCode: '91301'
+							postalCode: '91360'
 						},
-						phone: '(818) 597-0333',
-						website: {
-							url: 'http://hamptoninn3.hilton.com/en/hotels/california/hampton-inn-and-suites-agoura-hills-AGOCAHX/index.html',
-							label: 'hamptoninn3.hilton.com'
-						},
+						phone: '(805) 497-3701',
 						reservation: {
-							price: '$136/night',
-							fixedPrice: true,
-							details: 'Book on the website with group code CLA.'
+							url: 'http://bestwesterncalifornia.com/hotels/best-western-plus-thousand-oaks-inn',
 						},
-						description: 'Includes complimentary breakfast.'
-					}
+					},
+					{
+						name: 'Quality Inn & Suites',
+						address: {
+							address1: '984 W. Ventura Blvd',
+							address2: '',
+							city: 'Camarillo',
+							state: 'CA',
+							postalCode: '93010'
+						},
+						phone: '(805) 987-4188',
+						reservation: {
+							url: 'https://www.choicehotels.com/california/camarillo/quality-inn-hotels/ca132/rates?adults=2&checkInDate=2016-08-06&checkOutDate=2016-08-07',
+						},
+					},
+					{
+						name: 'Quality Inn & Suites',
+						address: {
+							address1: '12 Conejo Blvd',
+							address2: '',
+							city: 'Thousand Oaks',
+							state: 'CA',
+							postalCode: '91360'
+						},
+						phone: '(805) 495-7011',
+						reservation: {
+							url: 'https://www.choicehotels.com/california/thousand-oaks/quality-inn-hotels/caa68/rates?checkInDate=2016-08-06&checkOutDate=2016-08-07',
+						},
+					},
 				]
 			},
 		};
