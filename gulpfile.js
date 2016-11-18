@@ -2,12 +2,11 @@
  *	Includes
  */
 
+var path = require('path');
+
 // gulp & task utilities
 var gulp = require('gulp');
 var argv = require('yargs').argv;
-
-// server
-var server = require('./backend/server');
 
 // dev dependencies
 var gulpif = require('gulp-if');
@@ -49,8 +48,9 @@ gulp.task('default',
 	});
 
 gulp.task('serve', serveTask);
-gulp.task('watch:sass', watchSassTask);
+gulp.task('watch:api', watchApiTask);
 gulp.task('sass', sassTask);
+gulp.task('watch:sass', watchSassTask);
 
 
 /**
@@ -58,37 +58,60 @@ gulp.task('sass', sassTask);
  */
 
 function serveTask() {
-	var options = {
-		api: ENV.api,
-		client: ENV.client
-	};
+	var config = serveTask.config;
 
-	// TODO: look into usage & demand npm packages for options
+	// TODO: look into usage & demand npm packages for config
 
 	// port option
 	if (argv.port !== undefined) {
-		options.port = argv.port;
+		config.port = argv.port;
 	}
 	else if (argv.p !== undefined) {
-		options.port = argv.p;
-	}
-
-	// watch option
-	if (argv.w !== undefined) {
-		watchSassTask();
+		config.port = argv.p;
 	}
 
 	// TODO: livereload
 	// TODO: auto browser open
-	server.start(options);
+	getServer().start(config)
+		.then(function(serverInstance) {
+			console.log('Server started: ' + serverInstance.info.uri);
+
+			// watch option
+			if (argv.w !== undefined) {
+				watchApiTask();
+				watchSassTask();
+			}
+		});
+}
+serveTask.config = {
+	api: ENV.api,
+	client: ENV.client,
+};
+
+function watchApiTask() {
+	var config = watchApiTask.config;
+	return observe(config.src, function() {
+			// TODO: handle restart error
+			// TODO: queue up changes (gulp-batch)
+			getServer().restart()
+				.then(function(serverInstance) {
+					console.log('Server restarted: ' + serverInstance.info.uri);
+				});
+		});
+}
+watchApiTask.config = {
+	src: [
+		ENV.api.rootDir + '/**/*',
+		'!' + ENV.api.rootDir + '/server.js',
+	],
+};
+
+function sassTask() {
+	return compileSass();
 }
 
 function watchSassTask() {
 	return compileSass(true);
-}
-
-function sassTask() {
-	return compileSass();
 }
 
 function compileSass(startWatch) {
@@ -130,3 +153,30 @@ compileSass.config = {
 		]
 	},
 };
+
+
+/**
+ * Helper functions
+ */
+
+function getServer() {
+	return require('./' + ENV.api.rootDir + '/server.js');
+}
+
+function observe(source, callback) {
+	console.log('Watching', source);
+	return gulp
+		.src(source)
+		// run plumber + watch
+		.pipe(plumber())
+		.pipe(watch(
+			source,
+			function(vinyl) {
+				if (vinyl.event !== undefined) {
+					var filePath = path.relative(__dirname, vinyl.path);
+					console.log(filePath + ' modified...');
+					callback(vinyl.path);
+				}
+			}
+		));
+}

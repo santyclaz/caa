@@ -1,16 +1,25 @@
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
+
 var _ = require('lodash');
 var Hapi = require('hapi');
 var jsonfile = require('jsonfile');
+var Promise = require('bluebird');
+var reload = require('require-reload')(require);
 
+var server = null;
+var config = {};
+var startedPromise = null;
 
 /**
  *	API
  */
 
 module.exports = API = {
-	start: start
+	start: start,
+	stop: stop,
+	restart: restart,
+	status: status,
 };
 
 var defaultOpts = {
@@ -34,10 +43,10 @@ var defaultOpts = {
  *	Methods
  */
 
-function start(config) {
+function start(configuration) {
 	// process options
 	// TODO: clean this up, perhaps with extend or destructuring
-	config = typeof config === 'object' ? config : {};
+	config = _.extend({}, configuration);
 	var host = 'host' in config ? config.host : defaultOpts.host;
 	var port = 'port' in config ? config.port : defaultOpts.port;
 
@@ -47,7 +56,7 @@ function start(config) {
 	}
 
 	// create a server with a host and port
-	var server = new Hapi.Server();
+	server = new Hapi.Server();
 	server.connection({
 		host: host,
 		port: port
@@ -74,7 +83,7 @@ function start(config) {
 		// register client routes
 		server.register(
 			{
-				register: require('./client'),
+				register: reload('./client'),
 				options: clientConfig
 			},
 			function (e) {
@@ -85,14 +94,63 @@ function start(config) {
 	}
 
 	// start the server
-	server.start(function (e) {
-
-		if (e) {
+	var startServer = Promise.promisify(server.start, {context: server});
+	startedPromise = startServer()
+		.then(function() {
+			// console.log('Server started -', server.info.uri);
+			return server;
+		})
+		.catch(function(e) {
 			throw e;
-		}
+		});
 
-		console.log('Server running at:', server.info.uri);
-	});
+	return startedPromise;
+}
+
+function stop() {
+	if (!server) {
+		throw new Error('No server instance to stop');
+	}
+
+	var stopArgsArray = Array.prototype.slice.call(arguments, 0);
+	var stoppedPromise = startedPromise
+		.then(function() {
+			if (!server) {
+				throw new Error('Server instance already stopped');
+			}
+
+
+			var stopServer = Promise.promisify(server.stop, {context: server});
+			return stopServer.apply(server, stopArgsArray);
+		})
+		.then(function() {
+			// console.log('Server stopped -', server.info.uri);
+			var originalServer = server;
+			reset();
+			return originalServer;
+		});
+
+	return stoppedPromise;
+}
+
+function restart(configuration) {
+	// original config must be captured here since stop() clears it out
+	var conf = configuration !== undefined ? configuration : config;
+	var restartPromise = stop().then(function() {
+			return start(conf);
+		});
+
+	return restartPromise;
+}
+
+function status() {
+	return server === null ? 'stopped' : 'started';
+}
+
+function reset() {
+	server = null;
+	config = {};
+	startedPromise = null;
 }
 
 
@@ -160,7 +218,7 @@ function registerApiEndpoints(server, rootDir, rootUrlPath) {
 				apiPath = path.resolve(apiPath); // turn into absolute path
 				server.register(
 					{
-						register: require(apiPath)
+						register: reload(apiPath)
 					},
 					{
 						routes: {
@@ -195,7 +253,7 @@ function registerLibPlugins(server, rootDir) {
 				pluginPath = path.resolve(pluginPath); // turn into absolute path
 				server.register(
 					{
-						register: require(pluginPath)
+						register: reload(pluginPath)
 					},
 					onRegisterPluginError);
 			}
