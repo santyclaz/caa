@@ -175,7 +175,13 @@ function observe(source, callback) {
 				if (vinyl.event !== undefined) {
 					var filePath = path.relative(__dirname, vinyl.path);
 					console.log(filePath + ' modified...');
-					callback(vinyl.path);
+					try {
+						callback(vinyl.path);
+					}
+					// need this since watch seems to swallow exceptions
+					catch (e) {
+						console.log('stack' in e ? e.stack : e);
+					}
 				}
 			}
 		));

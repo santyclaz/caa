@@ -7,20 +7,6 @@ var jsonfile = require('jsonfile');
 var Promise = require('bluebird');
 var reload = require('require-reload')(require);
 
-var server = null;
-var config = {};
-var startedPromise = null;
-
-/**
- *	API
- */
-
-module.exports = API = {
-	start: start,
-	stop: stop,
-	restart: restart,
-	status: status,
-};
 
 var defaultOpts = {
 	host: 'localhost',
@@ -40,15 +26,113 @@ var defaultOpts = {
 
 
 /**
- *	Methods
+ * Constructor definition
  */
 
-function start(configuration) {
+function Server() {
+	this.config = {};
+
+	// internal attributes
+	this.server = null;
+	this.startedPromise = null;
+	this.stoppedPromise = null;
+	this.restartPromise = null;
+	this.internalState = Server.State.STOPPED;
+}
+
+
+/**
+ * Static variables & functions
+ */
+
+// Status is derived from interal attributes
+Server.Status = {
+	STARTING: 'STARTING',
+	STARTED: 'STARTED',
+	STOPPING: 'STOPPING',
+	STOPPED: 'STOPPED',
+	RESTARTING: 'RESTARTING',
+};
+
+// State is are atomic values that are not derived
+Server.State = {
+	STARTING: 'STARTING',
+	STARTED: 'STARTED',
+	STOPPING: 'STOPPING',
+	STOPPED: 'STOPPED',
+};
+
+Server.getInvalidStatusErrorMessage = function(status) {
+	switch (status) {
+		case Server.Status.STARTING:
+			return 'Server is in the middle of starting up';
+		case Server.Status.STARTED:
+			return 'Server is already started';
+		case Server.Status.STOPPING:
+			return 'Server is in the middle of stopping';
+		case Server.Status.STOPPED:
+			return 'Server is already stopped';
+		case Server.Status.RESTARTING:
+			return 'Server is in the middle of restarting';
+		default:
+			return 'Server is in unknown status "' + status + '"';
+	}
+};
+
+
+/**
+ * Instance methods
+ */
+
+Server.prototype.getStatus = function() {
+	if (this.restartPromise !== null) {
+		return Server.Status.RESTARTING;
+	}
+	switch (this.internalState) {
+		case Server.State.STARTING:
+			return Server.Status.STARTING;
+		case Server.State.STARTED:
+			return Server.Status.STARTED;
+		case Server.State.STOPPING:
+			return Server.Status.STOPPING;
+		case Server.State.STOPPED:
+			return Server.Status.STOPPED;
+	}
+};
+
+Server.prototype.start = function(config) {
+	// Doing this check here since there shouldn't be state cleanup in this scenario
+	if (this.getStatus() !== Server.Status.STOPPED) {
+		var msg = Server.getInvalidStatusErrorMessage(this.getStatus());
+		throw new Error(msg);
+	}
+
+	return this.__start(config);
+};
+// start with auto-cleanup on error
+Server.prototype.__start = function(config) {
+	try {
+		return this.__startRaw(config);
+	}
+	catch(e) {
+		// do state cleanup on unexpected failure
+		this.reset();
+		throw e;
+	}
+};
+// start without auto-cleanup on error
+Server.prototype.__startRaw = function(config) {
+	var self = this;
+	self.internalState = Server.State.STARTING;
+
 	// process options
+	// if new set of configs provided, override current
+	if (config) {
+		self.config = _.extend({}, config);
+	}
 	// TODO: clean this up, perhaps with extend or destructuring
-	config = _.extend({}, configuration);
-	var host = 'host' in config ? config.host : defaultOpts.host;
-	var port = 'port' in config ? config.port : defaultOpts.port;
+	var host = 'host' in self.config ? self.config.host : defaultOpts.host;
+	var port = 'port' in self.config ? self.config.port : defaultOpts.port;
 
 	// validation
 	if (typeof port !== 'number') {
@@ -56,32 +140,32 @@ function start(configuration) {
 	}
 
 	// create a server with a host and port
-	server = new Hapi.Server();
-	server.connection({
+	self.server = new Hapi.Server();
+	self.server.connection({
 		host: host,
 		port: port
 	});
 
 	// register API if set
-	if ('api' in config) {
-		var apiConfig = _.extend({}, defaultOpts.api, config.api);
+	if ('api' in self.config) {
+		var apiConfig = _.extend({}, defaultOpts.api, self.config.api);
 		var apiDirs = new ApiDirs(apiConfig);
 		var baseUrl = apiConfig.baseUrl;
 
 		// pull in configs
-		registerConfigs(server, apiDirs.config);
+		registerConfigs(self.server, apiDirs.config);
 		// register lib plugins
-		registerLibPlugins(server, apiDirs.lib);
+		registerLibPlugins(self.server, apiDirs.lib);
 		// register API endpoints
-		registerApiEndpoints(server, apiDirs.routes, baseUrl);
+		registerApiEndpoints(self.server, apiDirs.routes, baseUrl);
 	}
 
 	// register client if set
-	if ('client' in config) {
-		var clientConfig = _.extend({}, defaultOpts.client, config.client);
+	if ('client' in self.config) {
+		var clientConfig = _.extend({}, defaultOpts.client, self.config.client);
 
 		// register client routes
-		server.register(
+		self.server.register(
 			{
 				register: reload('./client'),
 				options: clientConfig
@@ -94,64 +178,102 @@ function start(configuration) {
 	}
 
 	// start the server
-	var startServer = Promise.promisify(server.start, {context: server});
-	startedPromise = startServer()
+	var startServer = Promise.promisify(self.server.start, {context: self.server});
+	self.startedPromise = startServer()
 		.then(function() {
 			// console.log('Server started -', server.info.uri);
-			return server;
-		})
-		.catch(function(e) {
-			throw e;
+			self.internalState = Server.State.STARTED;
+			return self.server;
 		});
 
-	return startedPromise;
-}
+	return self.startedPromise;
+};
 
-function stop() {
-	if (!server) {
-		throw new Error('No server instance to stop');
+Server.prototype.stop = function() {
+	// Doing this check here since there shouldn't be state cleanup in this scenario
+	if (this.getStatus() !== Server.Status.STARTED) {
+		var msg = Server.getInvalidStatusErrorMessage(this.getStatus());
+		throw new Error(msg);
 	}
 
+	return this.__stop();
+};
+// stop with auto-cleanup on error
+Server.prototype.__stop = function() {
+	try {
+		return this.__stopRaw();
+	}
+	catch(e) {
+		// do state cleanup on unexpected failure
+		this.internalState = Server.Status.STARTED;
+		throw e;
+	}
+};
+// stop without auto-cleanup on error
+Server.prototype.__stopRaw = function() {
+	var self = this;
+	self.internalState = Server.State.STOPPING;
+
 	var stopArgsArray = Array.prototype.slice.call(arguments, 0);
-	var stoppedPromise = startedPromise
-		.then(function() {
-			if (!server) {
-				throw new Error('Server instance already stopped');
-			}
-
-
-			var stopServer = Promise.promisify(server.stop, {context: server});
-			return stopServer.apply(server, stopArgsArray);
-		})
+	var stopServer = Promise.promisify(self.server.stop, {context: self.server});
+	self.stoppedPromise = stopServer.apply(self.server, stopArgsArray)
 		.then(function() {
 			// console.log('Server stopped -', server.info.uri);
-			var originalServer = server;
-			reset();
+			var originalServer = self.server;
+			self.reset();
 			return originalServer;
 		});
 
-	return stoppedPromise;
-}
+	return self.stoppedPromise;
+};
 
-function restart(configuration) {
-	// original config must be captured here since stop() clears it out
-	var conf = configuration !== undefined ? configuration : config;
-	var restartPromise = stop().then(function() {
-			return start(conf);
+Server.prototype.restart = function(config) {
+	var self = this;
+
+	if (self.getStatus() === Server.Status.RESTARTING) {
+		var msg = Server.getInvalidStatusErrorMessage(this.getStatus());
+		throw new Error(msg);
+	}
+
+	// if new set of configs provided, override current
+	if (config) {
+		self.config = _.extend({}, config);
+	}
+
+	var stoppedPromise;
+	if (self.getStatus() === Server.Status.STARTING) {
+		stoppedPromise = self.startedPromise.then(function() {
+			self.__stop();
+		});
+	}
+	else if (self.getStatus() === Server.Status.STARTED) {
+		stoppedPromise = self.__stop();
+	}
+	else if (self.getStatus() === Server.Status.STOPPING) {
+		stoppedPromise = self.stoppedPromise;
+	}
+	else if (self.getStatus() === Server.Status.STOPPED) {
+		stoppedPromise = Promise.resolve(null);
+	}
+
+	self.restartPromise = stoppedPromise
+		.then(function() {
+			return self.__start();
+		})
+		.finally(function() {
+			self.restartPromise = null;
 		});
 
-	return restartPromise;
-}
+	return self.restartPromise;
+};
 
-function status() {
-	return server === null ? 'stopped' : 'started';
-}
-
-function reset() {
-	server = null;
-	config = {};
-	startedPromise = null;
-}
+// reset internal state
+Server.prototype.reset = function() {
+	this.server = null;
+	this.startedPromise = null;
+	this.stoppedPromise = null;
+	this.internalState = Server.State.STOPPED;
+};
 
 
 /**
@@ -301,3 +423,11 @@ function onRegisterConfigsError(e) {
 		throw e;
 	}
 }
+
+
+/**
+ * Exports
+ */
+
+module.exports = new Server();
+
